@@ -1,0 +1,119 @@
+\documentclass[a4paper,11pt,bibtotocnumbered]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+\linespread{1.5} %Zeilenabstand
+
+\usepackage[a4paper, left=3cm, right=3cm, top=2.5cm]{geometry} %Seitenränder
+
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{longtable, tabu}
+\usepackage{multirow}
+\usepackage{rotating} %rotation von Zellen
+\newcommand\tabrotate[1]{\begin{turn}{90}\rlap{#1}\end{turn}} %rotation von Zellen
+
+
+\usepackage{tocbibind} %Literaturverz. in Inhaltsverz.
+
+
+\usepackage{romannum} %römische Zahlen im Fließtext
+
+\usepackage{titling}
+\newcommand{\subtitle}[1]{%
+  \posttitle{%                            Untertitel
+    \par\end{center}
+    \begin{center}\large#1\end{center}
+    \vskip0.5em}%
+}
+
+\usepackage{graphicx}
+
+\setlength{\parindent}{0pt}%kein Einrücken
+
+\usepackage{hyperref}
+
+\setcounter{tocdepth}{5}
+\setcounter{secnumdepth}{5}%Gliedrungstiefe im Inhaltsverzeichnis
+
+\usepackage[skip=3pt,font={small}]{caption}
+
+\bibliographystyle{unsrt}
+
+\captionsetup{format=hang, labelfont=bf, textfont=scriptsize} %caption fett
+
+\begin{document}
+
+
+\title{Biochemistry of Astrogliosis Models \textit{in vitro}}
+
+\author{Flora Joswphine Jung\\
+403500}
+\date{\today}
+
+
+\begin{titlepage}
+	\centering
+	\begin{figure}
+   \begin{minipage}[b]{.15\linewidth} % [b] => Ausrichtung an \caption
+      \includegraphics[width=\linewidth]{Logo.png}
+   \end{minipage}
+   \hspace{.7\linewidth}% Abstand zwischen Bilder
+   \begin{minipage}[b]{.2\linewidth} % [b] => Ausrichtung an \caption
+      \includegraphics[width=\linewidth]{LogoCharite.png}
+   \end{minipage}
+\end{figure}
+	%\includegraphics[width=0.2\textwidth]{Logo.png}\par\vspace{1cm}
+	{\scshape\LARGE Master Thesis\par}
+	\vspace{1cm}
+	{\scshape\Large Flora Josephine Jung \par}
+	\vspace{1.5cm}
+	{\huge\bfseries Biochemistry of Astrogliosis Models \textit{in vitro}  \par}
+	\vspace{2cm}
+	{\Large\itshape SoSe 2020 \par}
+	\vspace{2cm}
+	{\Large Technische Universität Berlin \par}
+	\vspace{.5cm}
+	{\Large\itshape Institut für Chemie \par}
+	\vspace{2cm}
+	{\Large Charité Universitätsmedizin Berlin\par}
+	\vspace{.5cm}
+	{\Large\itshape Institut für Biochemie \par}
+	\vfill
+	\date
+	\vfill
+\end{titlepage}
+
+\pagestyle{plain}
+\newpage
+\pagenumbering{Roman}
+
+\begingroup
+\renewcommand*{\thesection}{\Roman{section}}
+
+\newpage
+\section{Discussion}
+
+Astrogliosis is correlated with several neuropathological conditions like trauma, ischemic damage and neuroinflammation or neurodegenerative diseases such as \textsc{Alzheimer}s disease, \textsc{Parkinson}s disease and multiple sclerosis~\cite{Pekny2014}. So understanding the molecular processes during astrogliosis is crucially important to develop a holistic understanding of these pathologies. 
+
+\subsection{Cell Culture of stellate Astrocytes}
+
+To do so we established a new cell culture model based on the so called AWESAM-protocoll~\cite{Wolfes2018} in our lab to stablely produce \textit{in vivo}-like, stellate astrocytes. 
+
+We could validate that our astrocyte cultures were free from neurons and microglia via immunostainings and immunoblotting experiments. We could observe a rather high abundance of GFAP aswell as of GST1 and Sox9, which are all well known Astrocyte markers~\cite{Schiweck2018}.
+
+%which is a marker of reactive astrocytes, which indicates that albeit their stellate morphology and \textit{in vivo}-likeness these astrocytes have an \textit{a priori} reactivity.
+
+Map2, a neuron dendrite marker, was almost not detectable indicating a pure astrocytic culture.
+
+Microglia could be selectively removed by performing a LME treatment. LME is internalized by microglia and induces lysosomal disruption and subsequent apoptosis~\cite{Jebelli2015}. The absence of microglia could be validated by immunoblotting experiments.
+
+
+\newpage
+\renewcommand\bibname{}
+\bibliography{josephine_bachelor_work.bib}
+
+
+\end{document}

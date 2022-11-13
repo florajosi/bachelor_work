@@ -1,0 +1,1537 @@
+\documentclass[a4paper,11pt,bibtotocnumbered]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+%\usepackage[DIV11]{typearea}
+\linespread{1.5} %Zeilenabstand
+
+%\setkomafont{disposition}{\rmfamily} %Schriftart Überschriften
+
+\usepackage[a4paper, left=3cm, right=3cm, top=2.5cm]{geometry} %Seitenränder
+
+%Tabellen
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{longtable, tabu}
+\usepackage{multirow}
+\usepackage{rotating} %rotation von Zellen
+\newcommand\tabrotate[1]{\begin{turn}{90}\rlap{#1}\end{turn}} %rotation von Zellen
+
+
+\usepackage{tocbibind} %Literaturverz. in Inhaltsverz.
+
+%\usepackage[version=4]{mhchem}  %Reaktionsgleichungen
+
+\usepackage{romannum} %römische Zahlen im Fließtext
+
+\usepackage{titling}
+\newcommand{\subtitle}[1]{%
+  \posttitle{%                            Untertitel
+    \par\end{center}
+    \begin{center}\large#1\end{center}
+    \vskip0.5em}%
+}
+
+%\usepackage{setspace}
+%\usepackage[format=plain,
+%justification=RaggedRight,
+%singlelinecheck=false]{caption} %Bildunterschriften eingerückt
+%\DeclareCaptionFont{singlespacing}{\setstretch{1.2}}
+
+
+%Grafiken
+\usepackage{graphicx}
+
+\setlength{\parindent}{0pt}%kein Einrücken
+
+\usepackage{hyperref}
+
+\setcounter{tocdepth}{5}
+\setcounter{secnumdepth}{5}%Gliedrungstiefe im Inhaltsverzeichnis
+
+\usepackage[skip=3pt,font={small}]{caption}
+
+\bibliographystyle{unsrt}
+
+\captionsetup{format=hang, labelfont=bf, textfont=scriptsize} %caption fett
+%Kopfzeile/Fußzeile
+%\usepackage[headsepline,footsepline]{scrlayer-scrpage}
+%\pagestyle{scrheadings}
+%\clearpairofpagestyles
+%\ohead{\headmark}
+%\automark{section}
+%\cfoot{\pagemark}
+
+%\usepackage{epstopdf}
+%\epstopdfDeclareGraphicsRule{.tif}{png}{.png}{convert #1 \OutputFile}
+%\AppendGraphicsExtensions{.tif}
+
+%\usepackage{setspace}\usepackage{threeparttable}
+
+\begin{document}
+
+
+\title{Biochemistry of Astrogliosis Models \textit{in vitro}}
+
+\author{Jonas Z. E. Hollemann\\
+372030}
+\date{\today}
+
+
+\begin{titlepage}
+	\centering
+	\begin{figure}
+   \begin{minipage}[b]{.15\linewidth} % [b] => Ausrichtung an \caption
+      \includegraphics[width=\linewidth]{Logo.png}
+   \end{minipage}
+   \hspace{.7\linewidth}% Abstand zwischen Bilder
+   \begin{minipage}[b]{.2\linewidth} % [b] => Ausrichtung an \caption
+      \includegraphics[width=\linewidth]{LogoCharite.png}
+   \end{minipage}
+\end{figure}
+	%\includegraphics[width=0.2\textwidth]{Logo.png}\par\vspace{1cm}
+	{\scshape\LARGE Master Thesis\par}
+	\vspace{1cm}
+	{\scshape\Large Jonas Z. E. Hollemann \par}
+	\vspace{1.5cm}
+	{\huge\bfseries Biochemistry of Astrogliosis Models \textit{in vitro}  \par}
+	\vspace{2cm}
+	{\Large\itshape SoSe 2020 \par}
+	\vspace{2cm}
+	{\Large Technische Universität Berlin \par}
+	\vspace{.5cm}
+	{\Large\itshape Institut für Chemie \par}
+	\vspace{2cm}
+	{\Large Charité Universitätsmedizin Berlin\par}
+	\vspace{.5cm}
+	{\Large\itshape Institut für Biochemie \par}
+	\vfill
+	\date
+	\vfill
+\end{titlepage}
+
+%\begin{center}
+%\huge{Forschungspraktikum}\\
+%\vspace{1cm}
+%\Large{Technische Universität Berlin\\
+%Fakultät II\\
+%Institut für Chemie\\
+%Charité Universitätsmedizin Berlin}
+%\end{center}
+
+\pagestyle{plain}
+\newpage
+\pagenumbering{Roman}
+
+\begingroup
+\renewcommand*{\thesection}{\Roman{section}}
+\section*{Originalitätserklärung}
+
+Hiermit erkläre ich, dass ich die vorliegende Arbeit selbstständig und eigenhändig sowie ohne unerlaubte fremde Hilfe und ausschließlich unter Verwendung der aufgeführten Quellen und Hilfsmittel angefertigt habe.
+
+
+%\section*{Affidavit}
+
+%I herewith declare that I wrote and composed this thesis on my own with no other sources or aids than cited. This thesis has not been previously presented in an identical or similar form to any other German or foreign examination board.
+
+\vspace{1cm}
+Berlin,
+\vspace{1cm}
+
+............................................................... \\
+Jonas Hollemann
+
+
+\newpage
+
+\tableofcontents
+\newpage
+\section*{List of Abbreviations}
+
+\renewcommand{\arraystretch}{.9}
+\begin{small}
+
+\begin{longtabu}{p{3cm}X}
+%Abkürzung & Bedeutung\\
+%\endfirsthead
+%Abkürzung & Bedeutung\\
+%\endhead
+%\multicolumn{2}{r}{Weiter auf der nächsten Seite.}
+%\endfoot
+%\multicolumn{2}{r}{Weiter auf der nächsten Seite.}
+%\endlastfoot
+\% (v/v) & percentage by volume\\
+\% (w/v) & percentage by weight\\
+$^\circ$C & degree Celsius\\
+AA&amino acid\\
+AD&\textsc{Alzheimer}'s disease\\
+ADP& Adenosine diphosphate\\
+ATP& Adenosine triphosphate\\
+ADFH&actin-depolymerizing factor homology-domain\\
+ALS&amyotrophic lateral sclerosis\\
+BB& blue box\\
+BBB& blood brain barrier\\
+BCA&Bicinchoninic acid \\
+BSA & Bovine serum albumin\\
+CC& coiled-coil\\
+Ch& chicken\\
+ChABC&chondroitinase ABC\\
+CNS&central nervous system\\
+CSPG&Chondroitin sulfate proteoglycan\\
+DAPI&4',6-diamidino-2-phenylindole\\
+DBN & Drebrin\\
+DMEM & \textit{Dulbecco's Modified Eagle Medium}\\
+DNA & Deoxyribonucleic acid\\
+DTT & Dithiothreitol\\
+ECL& enhanced chemoluminescence\\
+ECM&extracellular matrix\\
+EGF&Epidermal growth factor\\
+EGTA& ethylene glycol-bis($\beta$-aminoethyl ether)-N,N,N',N'-tetraacetic acid\\
+FCS & fetal calf serum \\
+FDA&Food and Drug Administration\\
+g  & Gram\\
+GABA& gamma-aminobutyric acid\\
+GAP& \textit{GTPase-activating protein}\\
+GDP& Guanosine-5'-diphosphate\\
+GEF& GDP/GTP exchange factor\\
+GFAP&glial fibrillary acidic protein\\
+Gp& guinea pig\\
+GST&Glutathione \textit{S}-transferase\\ 
+GTP& Guanosine-5'-triphosphate\\
+h & hour\\
+HBSS & \textit{Hanks' Balanced Salt Solution} \\
+hbEGF&Heparin-binding EGF-like growth factor\\
+HD&\textsc{Huntington}'s disease\\
+HEK & human embryonic kidney \\
+Hel& helical Domain\\
+HEPES&(4-(2-hydroxyethyl)-1-piperazineethanesulfonic acid)\\
+Hm&hamster\\
+HRP &Horseradish peroxidase\\
+IL&interleukin\\
+kDa & Kilodalton\\
+KEGG&Kyoto Encyclopedia of Genes and Genomes\\
+L & litre\\
+LAR& leukocyte common antigen-related phosphatase\\
+LFQ&label free quantification\\
+LME & Leucine methyl ester \\
+LPS&lipopolysaccharide\\
+M & Marker\\
+mA & Milliampere\\
+mAb& monoclonal antibody\\
+MAP&microtubule-associated protein\\
+mg & Milligram\\
+mGluR&  metabotropic glutamate receptors\\
+min & Minute\\
+mL & Millilitre\\
+m\textsc{m} & $\frac{\mathrm{mmol}}{\mathrm{L}}$\\
+mmol & Millimole\\
+mol&mole\\
+Ms & mouse\\
+MS& mass spectrometry\\
+NOS2&Nitric oxide synthase-2\\
+NP 40& nonyl phenoxypolyethoxylethanol\\
+P/S & Penicillin/Streptomycin \\
+pAb & ployclonal antibody\\
+PAGE& polyacrylamide gel electrophoresis\\
+PBS & phosphate buffered saline\\
+PD&\textsc{Parkinson}'s disease\\
+PEI&Polyethylenimine\\
+PHEM & PIPES, HEPES, EGTA, Magnesium sulfate\\
+PIPES&piperazine-N,N'-bis(2-ethanesulfonic acid))\\
+PLO&Polyornithine\\
+PN&post natal\\
+POI&protein of interest\\
+PP & \textit{proline-rich region}\\
+PTP& protein tyrosine phosphatases\\
+Rb & rabbit\\
+RIPA & Radioimmunoprecipitation assay\\
+rpm & revolutions per minute\\
+RT& room temperature\\
+SCA1&spinocerebellar ataxia type 1\\
+SDS & Sodium dodecyl sulfate\\
+Sol& solvent\\
+SP3& single-pot, solid-phase-enhanced sample preparation \\
+TBI&traumatic brain injury\\
+TBS-T&Tris-buffered saline with Tween20\\
+TLR&Toll-like receptor\\
+TMEDA & Tetramethylethylenediamine\\
+TNF&tumor necrosis factor\\
+Tris&tris(hydroxyethyl)aminomethane\\
+Tris-HCl&tris(hydroxyethyl)aminomethane hydrochloride\\
+UV & Ultraviolet\\
+V & Volt\\
+$V$&Volume\\
+vs & versus\\
+WT & Wild type\\
+$\mu$L & mikrolitre\\
+$\mu$\textsc{m} & $\frac{\mu\mathrm{mol}}{\mathrm{L}}$\\
+$\mu$mol & mikromole\\
+\end{longtabu}
+
+
+\end{small}
+\newpage
+\listoffigures
+\newpage
+\listoftables
+\newpage
+
+
+\section{Acknowledgment}
+
+While working in the lab to reach my experimental goals, I received help from several people. In these few lines I would like to thank them. At the very beginning I have to thank Juliane Schiweck, who is one of the kindest persons I have met so far. With loads of endurance and empathy, she taught me the basics of cell culture and fluorescence microscopy.  
+
+Next I thank Prof. Dr. Britta Eickholt for the possibility to work in her research group. She is a very passionate researcher and in contrast to many other scholars able to ignite the flame of fascination and interest to science in peoples minds and hearts.
+
+I would also like to thank Prof. Dr. Thomas Friedrich for being my first evaluator and contact person at the TU-Berlin.
+
+I thank Joachim Fuchs for sharing his profound knowledge of biology in general and applied statistics in particular with me.
+
+Moreover I thank the whole research group of Prof. Eickholt, which consists of Kerstin Schlawe, Kristin Lehmann, Beate Diemar, Dr. Till Mack, Dr. Sebastian Rademacher, Dr. Patricia Kreis, Dr. Kai Murk, Christina Kroon, Shannon Bareesel, Marta Ornaghi, Vanessa Schulmann and Isabell Battke. 
+
+I thank the staff of the AMBIO core facility Dr. Jan Schmoranzer, Dr. Stefan Donat und Jutta Schüler and the staff of the high throughput mass spectrometry department Dr. Kathrin Textoris-Taube, who spend a lot of time on answering my questions, and moreover Dr. Michael Mülleder, Dr. Christoph Gille and Manuela Stäber.
+
+I would also like to thank Dr. Marieluise Kirchner from the group of Philip Mertins at the MDC. 
+
+I thank my family and friends, who always ensure that I don't forget, that there is more in life than science. 
+ 
+Last but not least i would like to mention, that in order to perform these experiments 58 mice and 6 rats had to give their lives. I always tried to handle their remainings as respectful as possible and gave my best to ensure that they did not die in vain.
+
+
+
+\newpage
+\section{Zusammenfassung}
+
+Astrocyten haben zahlreiche Funktionen im zentralen Nervensystem sowohl im physiologischen als auch im pathologischen Zustand. Durch Trauma, Ischämie, Neurodegenaration oder -inflammation gelangen Astrocyten in einen reaktiven Zustand, der als Astrogliose bezeichnet wird.
+
+Die vorliegende Arbeit ist auf die biochemischen Prozesse in reaktiven Astrocyten \textit{in vitro} und \textit{in vivo} fokussiert und ferner in drei Projekte gegliedert.
+
+Im ersten Projekt wurde ein unlängst publiziertes Zellkulturmodell verwendet, welches zu einer sternartigen Morphologie der Zellen führt, die Astrocyten \textit{in vivo} sehr ähnlich ist. Um die Auswirkungen eines etablierten \textit{in vitro} Astrogliosemodells auf das Proteom dieser Astrocyten zu testen, wurden massenspektrometrische Untersuchungen vorgenommen.     
+
+Im zweiten Projekt untersuchte ich den Drebrin-abhängigen Transport von Oberflächenrezeptoren in polygonalen, reaktiven Astrocyten durch massenspektrometrische Proteomanalysen. Ich konnte dabei die Anreicherung einiger Oberflächenproteine sowohl in WT- als auch in DBN KO-Astrocyten beobachten. Dabei war $\beta$2-Integrin in WT Astrocyten im Vergleich zu DBN KO Astrocyten an der Zelloberfläche angereichert.
+
+Im dritten Projekt konnte ich, durch die Auswertung von immunohistchemisch behandelten Gewebeschnitten der Wirbelsäulen von Ratten, Indizien dafür finden, dass die Hochregulation des Aktinbindeproteins Drebrin nicht auf astrogliotische Zellen in Hirngewebe begrenzt ist, sondern in allen Astrocyten des zentralen Nervensystems, und somit auch im Rückenmark erfolgt. Darüber hinaus deuten diese Ergebnisse darauf hin, dass es sich bei der Drebrin-Hochregulation im Zustand der Astrogliose um einen speziesübergreifenden Effekt handelt.     
+
+
+
+
+\newpage
+\section{Summary}
+
+Astrocytes have several functions in the central nervous system in healthy tissue but also during pathological state.
+Upon trauma, ischemic damage, neurodegeneration or -inflammation they are reaching a reactive state which is referred to as astrogliosis.
+
+This work focusses on the biochemical processes in astrogliotic cells \textit{in vitro} and \textit{in vivo} and is divided into three projects.
+
+In first project I used a recently discovered cell culturing technique to obtain a more \textit{in vivo}-like, stellate morphology of the astrocytes. Moreover I performed mass spectrometry based experiments to observe the changes of the proteome upon an \textit{in vitro} astrogliosis model. 
+
+In the second project I examined the Drebrin-dependant surface receptor trafficking in polygonal astrocytes in the state of reactive gliosis by mass spectrometric proteome analysis focussing on Integrins. I observed the enrichment of several surface proteins in both WT and DBN KO astrocytes. Thereby I found $\beta$2-Integrin to be enriched in WT astrocytes. 
+
+In the third project I gained indication that the upregulation of the Actin-binding protein Drebrin is not restricted to astrogliotic cells of the brain, but moreover occurs in all astrocytes of the CNS, including the spinal cord, by investigation of immunohistochemical stainings. Additionally this indication of Drebrin upregulation \textit{in vivo} was observed in rat astrocytes and would thereby be a species-overarching effect.
+
+
+
+
+
+\newpage
+\pagenumbering{arabic}
+\endgroup
+\setcounter{section}{0}
+\section{Introduction}
+
+This thesis deals with different aspects of the astrocytic response to  CNS injury \textit{in vitro} and \textit{in vivo}. In the following sections, the main players in the astrocytic reponse to injury will be introduced.
+
+\subsection{Astrocytes}
+
+Astrocytes were first described by \textsc{Ramón y Cajal} in 1913. He named these cells after their star-like shape that he saw observing them unter the microscope. With modern microscopy techniques, it is now possible to depict the fine, branched processes and protusions of astrocytes, which - rather than giving them a star-like shape - give them a sponge-like morphologhy~\cite{Cajal1913}. 
+
+
+
+
+Astrocytes are the most common type of glial cells and have numerous functions in the central nervous system (CNS), including nutrient supply of neurons, controlling homeostasis, support of synaptogenesis and modulation of synapse density~\cite{Sofroniew2010}. Moreover astrocytes are responsible for maintaining the blood brain barrier (BBB) and controlling of local blood stream~\cite{Schiweck2018}. They are closely related to the regulation of synaptic signalling processes by neurotransmitter uptake and recycling, they for example remove glutamate from the synaptic cleft to avoid excitotoxicity. Moreover astrocytes express various neurotransmitter receptors~\cite{Schiweck2018, Colangelo2012} and furthermore internalise K\textsuperscript{+}-ions which are secreted by neurons~\cite{Kandel2013}.
+
+
+ %including metabotropic glutamate receptors (mGluRs) or purinergic P2X receptors and release several neurotransmitters like glutamate, GABA, ATP and \textsc{d}-serine
+ 
+ 
+For a long time astrocytes were thought to be a rather homogenous cell population and only in recent years, several subtypes could be distinguished according to morphology, function and localisation~\cite{Matyash2010}.
+
+They can broadly be divided into protoplasmatic and fibrous astrocytes. Protoplasmatic astrocytes are localized in the grey matter of the CNS and are characterized by heavily branched protrusions.
+In mature CNS they are forming seperate domains with almost no intermingling as shown in figure \ref{Astrodomains}. Overlapping of separate astrocyte domains was found in different pathological states of the CNS as for example epilepsy~\cite{Pekny2014}.
+
+
+
+%\begin{figure}[H]
+%\centering
+%\includegraphics[scale=.4]{Astrodomains.png} 
+%{\captionsetup{format=hang}\caption[Seperate domains of protoplasmic astrocytes in vivo.]{Seperate domains of protoplasmic astrocytes in vivo~\cite{Pekny2014}.}\label{Astrodomains}}
+%\end{figure}
+
+
+Fibrous astrocytes on the other hand are part of the white matter and have, although they are less branched than protoplasmic astrocytes, many very long processes. Both subtypes are forming countless connections to synapses, capillaries and nodes of \textsc{Ranvier} and have close contacts to other astrocytes via gap junctions~\cite{Sofroniew2010}.
+
+
+One important function of astrocytes is their ability to respond to CNS injury. The following section will address the astrocytic response to injury, termed "reactive astrogliosis".
+
+
+
+
+
+ 
+\subsection{Reactive Astrogliosis} 
+
+In case of CNS damage through different pathologies, including trauma, neurodegeneration, neuroinflammation or ischemic damage a cascade of molecular mechanisms is activated which converts astrocytes into a reactive state, also referred to as reactive astrogliosis~\cite{Schiweck2018, Pekny2014}.
+
+Astrogliosis has a crucial impact on astrocytes physiology in general and metabolome and proteome in particular.
+Thereby the degree of severity of the gliosis is strongly dependent on the severity of the causing pathology. 
+
+
+Very characteristic for any degree of reactive astrocytes is the upregulation of the intermediate filament protein GFAP~\cite{Garcia2004}, also protein levels of nestin and vimentin are increased~\cite{Karimi-Abdolrezaee2012}. Although GFAP is absent in grey matter \textit{in vivo} during physiological conditions it gets upregulated in case of high reactivity. Hence in grey matter \textit{in vivo} GFAP is rather a marker for reactive protoplasmic astrocytes in the state of reactive astrogliosis. 
+ 
+ 
+In addition, reactive astrocytes undergo hypertrophy of astrocytic processes and soma and dramatically alter their extracellular matrix (ECM). Astrocytes in the spinal cord were found upregulate special ECM components such as Chondroitin sulfate proteoglycans (CSPGs) and tenascins after spinal cord injury~\cite{Karimi-Abdolrezaee2012}. 
+
+In strongly severe cases of astrogliosis astrocytes are forming glial scars. Thereby they are losing their individual domains and develop pallisading processes towards the pathogen or injury site.
+Figure \ref{Astrogliose} depicts characteristic astrocyte morphology in comparison to distance to the injury.
+
+%\begin{figure}[H]
+%\centering
+%\includegraphics[scale=.3]{AstroglioseSchiweck2018.png} 
+%{\captionsetup{format=hang}\caption[Astrocyte morphologies and characteristics in reactive astrogliosis.]{Astrocyte morphologies and characteristics in reactive astrogliosis depending on distance to lesion site~\cite{Schiweck2018}.}\label{Astrogliose}}
+%\end{figure}
+
+ The forming glial scar represents a neuroprotective barrier against pathogens and reestablishes the blood brain barrier~\cite{Sofroniew2010} but despite its essential function, the formation of a glial scar and its effects on CNS recovery are discussesd controversally.
+On the one hand, the glial scar contributes to the protection of the uninjured brainparenchyma and serves to reestablish the BBB after injury~\cite{Liddelow2017}.
+
+
+On the other hand, reactive astrocytes also appear to have several detrimental effects on the CNS by secreting cytokines, high amounts of reactive oxygen species and excitotoxic glutamate. In addition AQP4 overactivity can lead to cytotoxic endema~\cite{Sofroniew2010}.
+
+
+
+The changes in cell morphology of reactive astrocytes require a strictly defined remodeling of the cytoskeleton~\cite{Zamanian2012}.
+In eukaryotes the cytoskeleton divides into three major subgroups: microtubules, intermediate filaments and actin filaments.
+
+Actin is a, in eukaryotes, highly conserved ATP-binding protein. Actin monomers, called G-Actin, are able to form fibrous structures, called F-Actin, through self-aggregation. These Actin-filaments are right-handed, helical and moreover polarized structures with two different ends. At the \textit{plus end} Actin-monomers are more likely to bind and thereby to enlarge the filament and at the \textit{minus end} the dissociation of actin monomers is more likely to happen.
+
+The actin filament acts as an ATPase, thus in Actin monomers, which are part of an Actin filament, the bound nucleotide is more likely to be dephosphorylated (ADP), whilst free Actin monomers carry phosphorylated nucleotides (ATP).      
+
+The dynamic equilibrium between association of G-Actin at the \textit{plus end} in dissociation at the \textit{minus end}, which leads in sum to a steady length of the filament, is referred to as \textit{treadmilling}~\cite{Alberts2015}.
+
+Even though Actin treadmilling is required to maintain a dynamic equilibrium that allows cells to respond to changes in their environment, the complexity of the Actin networks and dynamics found in cells cannot be explained only by Actin treadmilling.
+
+To ensure the dynamic regulation of the Actin-cytoskeleton, required for cell diviation, cargo-trafficking and cell motility, or reactive astrogliosis, a plethora of proteins with several different functions bind and interact with Actin. 
+
+
+
+The functions of Actin-binding proteins range from association with G-Actin to increase the likelihood of assembly into filamentous actin over stabilization of F-Actin to crosslinking of Actin filaments to microtubules, the cell membrane or different Actin filaments~\cite{Alberts2015}. 
+
+
+One of those Actin-binding proteins, crucially relevant for astrogliosis, is called Drebrin. Its function will be introduced in the next section.  
+
+
+
+% Moreover scar forming astrocytes after SCI were found to secrete vasoconstrictors that regulate the diameter of certain bloodvessels and perform uptake of excessive glutamate to avoid excitotoxicity. They produce several antioxidants like glutathione and are responsible for the removement of amyloid-$\beta$ peptides and NH\textsubscript{4}\textsuperscript{+}-ions~\cite{Karimi-Abdolrezaee2012}. 
+
+
+%On the other hand, the scar itself and certain inibitory molecules secreted by scar-forming astrocytes have inhibitory effects on neuroregneration~\cite{Liddelow2017}. Scar forming astrocytes are found to upregulate several inhibitory factors in their ECM such as CSPGs, tenascins and collagen. In healthy CNS CSPGs are found in perineural networks were they function as stabilizing factors for synapses and impede unwanted plasticity~\cite{Karimi-Abdolrezaee2012}. The absence of CSPGs after CNS damage led to enhanced neurogeneration as found by inhibition of CSPGs by chondroitinase ABC (ChABC)~\cite{Bradbury2002}. 
+%The inhibitory effect of CSPGs is based on their signalling through mainly two receptor protein tyrosine phosphatases, which are PTP-$\sigma$ and leukocyte common antigen-related phosphatase (LAR)~\cite{Karimi-Abdolrezaee2012}. 
+
+%Intracellular CSPG-mediated inhibition of axon regeneration is transduced through the Rho-ROCK-pathway which stabilizes actin polymerization in induces collapse of axonal growth cones~\cite{Yiu2006}. Moreover CSPGs are also capable to activate protein kinase C (PKC) by a Ca\textsuperscript{2+}-mediated mechanism. 
+
+
+ 
+
+\subsection{Role of Drebrin}
+
+
+The developmentally regulated brain protein (Drebrin) was discovered in 1985 by \textsc{Shirao} und \textsc{Obata} \cite{Shirao1985}, who found it in chickens \textit{Colliculi superiores}. Whereas they were able to characterize three isoforms (two embryonal and one adolescent): Drebrin~E1, Drebrin~E2 and Drebrin~A in chicken. In mammals only two isoforms were present: Drebrin E and Drebrin~A. While Drebrin E occurs in several cell types, Drebrin~A is specific for neurons. The two isoforms differ in a short (46~AA) insertion sequence called Ins2 which is present in Drebrin~A but not in Drebrin~E~\cite{Shirao2017}.
+
+
+Both Drebrin~E and Drebrin~A are able to sidewise bind F-actin, but not G-actin. It was possible to divide the sequence of Drebrin in distinguishable domains by \textit{in silico} analysis. The actin-depolymerizing factor homology domain (ADFH) is located at the $N$-terminus and followed by the coiled-coil domain (CC), the helical domain (Hel) and the proline-rich region (PP). The intrinsically disordered blue box (BB) is located at the $C$-terminus.  
+Experiments revealed that both the CC- and the Hel domain are able to bind F-actin individually and are moreover involved in the formation of filopodia~\cite{Worth2013}. 
+
+According to those findings the binding domain of drebrin is thought to be located in the $N$-terminal region. The binding affinity to F-actin of both isoforms, Drebrin E and Drebrin A, is about $K_d=10^{-7}$~\textsc{m} with a stoichiometry of about 1:5 which indicates a strong similarity of the binding properties of both isoforms~\cite{Shirao2017}.   
+
+
+Actin filaments are getting stabilized due to the binding of drebrin, while at the same time the actin helices are getting widened to 40~nm per turn~\cite{Shirao2017}.   
+
+\vspace{.75cm}
+
+
+%\begin{figure}[H]
+%\centering
+%\includegraphics[scale=.4]{Drebrinsequencecrop.png} 
+%{\captionsetup{format=hang}\caption[Drebrin.]{Scematic segmentation of the actin biding protein Drebrin encoding \textit{drebrin} gene~\cite{Worth2013}.}\label{Drebrin}}
+%\end{figure}
+
+
+Until now, Drebrin has been studied mainly in neurons, where it is highly abundant in dendritic spines. Our group could show recently that Drebrin is important in protection against oxidative stress in dendritic spines~\cite{Kreis2019}.
+
+
+
+Until recently, it was unclear whether Drebrin plays any major role in astrocytes. One paper reported that Drebrin interacts with CXN43, a gap junction protein that is involved in transmission of signals between astrocytes, thereby regulating neuronal transmission~\cite{Butkevich2004}.
+
+However, this study showed a severe gap junction phenotype upon the loss of drebrin \textit{in vitro}, in contrast experiments with our DBN KO mice indicate DBN to be non-essential during neuronal development and moreover in synaptic transmission and plasicity~\cite{Willmes2017}. So we found no indication of this severe phenotype \textit{in vivo}. 
+
+
+Recently, our group investigated the role of Drebrin in astrocytes upon traumatic brain injury. We could demonstrate that Drebrin is upregulated in astrocytes \textit{in vitro} and \textit{in vivo} upon injury, and, that the loss of Drebrin leads to severly impaired astrogliosis and subsequent neurodegeneration in an \textit{in vivo} model of traumatic brain injury (TBI).
+
+
+Upon TBI, DBN$^{-/-}$-mice displayed GFAP positive astrocytes at the injury site, however, the astrocytes had an impaired glial scar formation, as measured by polarization of astrocytic processes towards the glial scar. At a later time point after TBI, no GFAP positive reactive astrocytes could be observed in DBN$^{-/-}$-animals as opposed to WT animals, where a Glial scar was present. The lack of a glial scar in DBN$^{-/-}$-animals was accompanied by an excessive neurodegeneration, suggesting that astrocytes require Drebrin for damage control in the brain following injury~\cite{Schiweck2020}.   
+
+
+Unexpectedly, our study showed that Drebrin plays an important role in membrane trafficking in astrocytes. In detail, Drebrin is necessary for the formation of actin scaffolds that enable the formation of tubular endosomes. Without Drebrin, these tubular endosomes cannot be formed and important surface receptors cannot be trafficked appropriately, leading to impaired astrogliosis~\cite{Schiweck2020}. Figure \ref{Drebrinmodel} depicts our current model of Drebrin function during the scarring process on the cellular level and compares WT and DBN KO astrocytes. 
+
+
+
+
+%\begin{figure}[H]
+%\centering
+%\includegraphics[scale=.35]{DBNmodel.png} 
+%{\captionsetup{format=hang}\caption[Proposed model of Drebrin function.]{\textbf{Proposed model of Drebrin function during scarring process} ~\cite{Schiweck2020}.}\label{Drebrinmodel}}
+%\end{figure}
+
+
+One protein, whose trafficking was found to be Drebrin-dependant is one of the group of integrins, whose influence on astrogliosis is now to be illuminated.
+
+
+\subsection{Role of Integrins}
+
+Integris are cell adhesion receptors that are involved in the crosslinking of the cell to the extracellular matrix. The Integrin family is composed by 24 members, each of with consists of an $\alpha$ and a $\beta$ subunit, forming heterodimers. Until now 18 $\alpha$- and 8 $\beta$-subunits are known in vertebrates~\cite{Barczyk2010}. 
+
+The $\alpha$-subunit consists of a seven-bladed so called $\beta$-propeller, that is connected to a \textit{calf-1}-, a \textit{calf-2}- and a membrane-bound-domain via a $thigh$-domain. Moreover 9 of the 18 different $\alpha$-subunits contain a so called $\alpha$I-domain, which is involved in the binding of the ligand under influence of a coordinated Mg\textsuperscript{2+}-ion. So the $\alpha$-subunit of the integrin determines the ligand specificity of the whole heterodimer~\cite{Barczyk2010}. 
+
+The $\beta$-subunit is composed of a \textit{plexin-sempahorin-integrin}- (PSI) domain, a \textit{hybrid} domain, a $\beta$I domain, and four \textit{cysteine-rich epidermal growth factor}- (EGF) repeats. The $\beta$-domain is connected to the cytoskeleton and is in integrins lacking of an $\alpha$I-domain moreover involved in the ligand binding~\cite{Barczyk2010}. 
+
+Figure \ref{Integrin} depicts a scematic model of an $\alpha$I-domain-containing Integrin.
+
+
+
+%\begin{figure}[H]
+%\centering
+%\includegraphics[scale=.35]{Integrin.png} 
+%{\captionsetup{format=hang}\caption[Integrin.]{\textbf{Depiction of an {\boldmath$\alpha$}I-domain-containing Integrin}~\cite{Barczyk2010}.}\label{Integrin}}
+%\end{figure}
+
+
+Integrins function as crosslinkers between the inner of the cell and the extracellular matrix. Thereby they were found to convey mechanical forces from the ECM to intracellular actin scaffolds and induce downstream signalling events. This transfer of tension and pressure to the inner of the cell is referred to as mechanotransduction, which has a crucial impact for cell migration and polarisation.~\cite{Sun2016}.
+
+Moreover Integrins have an influence in reactive astrogliosis~\cite{Robel2009, North2015, Hara2017}.
+It was found that the deletion of $\beta$1-Integrin leads to partial astrogliosis without any injury context~\cite{Robel2009}. Moreover the absence of $\beta$1-Integrin in ependymal zone stem cells, which are major progenitors of astrocytes after SCI, leads to increased differentiation of astrocytes \textit{in vitro}~\cite{North2015}.
+
+Interestingly it was recently possible to show that transplantation of reactive astrocytes to healthy CNS environment leads to reversion of astrogliosis and inhibition of an integrin-mediated pathway promotes functional recovery after spinal cord injury~\cite{Hara2017}.
+
+In summary, Integrins play a major role in reactive astrogliosis in the CNS.
+
+
+
+
+%\subsection{Potential molecular targets in Reactive Astrogliosis}
+
+
+%Due to their partial negative influence of neuroregeneration, the complete inhibition or even ablation of reactive astrocytes has been discussed.
+
+
+% Interestingly the complete inhibition or even ablation of reactive strocytes led in most cases to exacerbation rather than to recovery of the tissue~\cite{Sofroniew2009}. Thus the targeting of special molecular effectors seems more effective to achive neuroregeneration.
+%Astrocytes are responsible for the reuptake of excessive glutamate from the synaptic cleft to avoid excitotoxicity. They are expressing the glutamate transporters EAAT1 and EAAT2 which reduce their activity under certain conditions such as ALS. The spider venom component parawexin 1 was found to increase the activity of EAAT2 and therby protecting retinal neurons from degeneration~\cite{Fontana2003}.
+
+%Other possible targets related to reactive astrogliosis are enzymes that influence levels of oxidative stress. Nitric oxide synthase-2 (NOS2) for example is not expressed under physiological conditions. In case of injury or presence of infammation mediaters such as interleukin 1$\beta$ (IL-1$\beta$), lipopolysaccharide (LPS) or tumor necrosis factor $\alpha$ (TNF$\alpha$) it gets upregulated and produces the radical nitric oxide~\cite{Hamby2010}. The contribution of NOS2 to phathological conditions in CNS was observed in several rodent models. For example led the genetic deletion of NOS2 to decreased infarct volumes in mice with middle cerebral artery occlusion~\cite{Iadecola1997}. Albeit there are contraindicant results concerning \textsc{Alzheimer}s disease. In one AD mouse model, deletion of NOS2 led to reduced  $\beta$-amyloid plaque formation~\cite{Nathan2005} while in a different mouse model the absence of NOS2 led to increasing amounts of tau hyperphosphorylation and thereby neurodegeneration~\cite{Colton2006}. These indeed inconsistant findings are anyways remarkable and suppose NOS2 to be an interesting astrogliosis related target. Other enzymes that were found to have an influence on oxidative stress during astrogliosis are Cu/Zn superoxide dismutase (SOD), the cyclooxygenases 1 and 2 (COX-1 and COX-2) and glutathione~\cite{Hamby2010}.   
+ 
+%Instead of direct inhibition of proteins that act during astrogliosis in maladaptive manner it is possible to target proteins that are part of the signalling process that leads to their expression. Various cytokines such as IL-1, TNF-$\alpha$, IL-6 and transforming growth factor-1 (TGF-1) are related to reactive astrogliosis by either up- or downregulation of certain genes like NOS-2 or COX-2~\cite{Hamby2010}. Transforming growth factor-$\beta$1 (TGF-$\beta$1) is a cytokine, tremendously upregulated during neuropathological conditions. The signalling cascade of TGF-$\beta$1 includes the activation of activin-like kinases (ALKs) and results in the phosphorylation in a protein of the SMAD family which leads to changes in gene expression~\cite{Miyazawa2002}. The signalling of TGF-$\beta$1 effects astrocytes in several manners including  upregulation of amyloid precursor protein (APP), regulation of GFAP expression and regulation of glial scar formation by upregulation of ECM components such as chondroitin sulfate proteoglycans, laminin and fibronectin~\cite{Hamby2010}. 
+
+
+%One well known trigger of reactive astrogliosis is the signalling of interleukin-6 (IL-6) via the JAK/Stat-pathway through STAT3~\cite{Callaghan2014}. The drug triptolide, a diterpene isolated from a chinese herb, was found to reduce pSTAT3 levels \textit{in vitro} and \textit{in vivo} and thereby diminish GFAP level and the degree of severety of astrogliosis~\cite{Su2010}.
+
+%Aquaporin 4 (AQP4) is an astrocyte specific water transporter and normally localized on end-feet of astrocytes and gets upregulated under infammatory conditions as a result of IL-$\beta$1 signalling~\cite{Laird2010}. High amounts of AQP4 can cause brain edema~\cite{Hamby2010}.    
+
+%The presented targets are still not completely understood, so further investigation is needed. 
+
+
+
+
+\newpage
+\section{Aim of the Thesis}
+
+As depicted in the introduction, astrogliosis is an important process during CNS injury. Understanding factors that contribute to astrogliosis is essential to eventually be able to manipulate astrogliosis and thus develop therapies that enhance the outcome for patients suffering from TBI or Spinal cord injury. This study aims to characterize specific aspects of astrogliosis.
+ 
+This thesis is divided into three major projects.
+
+The first project takes advantage of a recently discovered \textit{in vitro} method of astrocytes culture which, in comparison to other common astrocyte culture models, yields more \textit{in vivo}-like, less reactive astrocytes. In combination with a well established \textit{in vitro} model of reactive gliosis, the aim of this part is to characterize changes in the proteome at different time points after injury and thus create a platform that allows for testing of substances that may directly affect astrogliosis.
+
+The second project builds up on our previous study analyzing the differences between surface receptor trafficking in astrocytes with or without Drebrin in an \textit{in vitro} model of astrogliosis. Technological restrains in our previous 
+study limited the analysis of mistrafficked surface proteins in DBN KO animals. Thus, the aim of this project is the analysis of the surface proteome between injured WT and DBN KO astrocytes \textit{in vitro} using Massspectrometry.
+
+A third project of this thesis involves testing whether the upregulation of Drebrin in cortical astrocytes upon injury is transferable to spinal chord injury.
+
+
+\newpage
+\section{Materials}
+
+\setcounter{table}{0}
+
+\subsection{Machines}
+
+The used machines are listed in table \ref{Geräte}.
+
+%\begin{table}[H]
+%\centering
+%\caption{Liste verwendeter Geräte.}
+\renewcommand{\arraystretch}{1.1}
+\begin{longtabu}{p{3cm}XX}
+\caption[List of machines]{List of machines.}\label{Geräte}\\
+\toprule
+type&machine&source\\
+\midrule
+\midrule
+centrifuges &Heraeus Fresco 17 &Thermo Scientific (Berlin, Germany)\\
+			&MiniStar silverline&VWR (Darmstadt, Germany)\\
+			&Heraeus Megafuge 16&Thermo Scientific (Berlin, Germany)\\
+\midrule
+scales&CPA64 analyse scale&Sartorius Lab Instruments GmbH \& Co. KG (Göttingen, Germany)\\
+		&VWR-1502&Sartorius Lab Instruments GmbH \& Co. KG (Göttingen, Germany)\\
+\midrule
+microscopes&Eclipse Ts2&Nikon Deutschland Gmbh (Düsseldorf, Germany)\\
+	&Eclipse Ti&Nikon Deutschland Gmbh (Düsseldorf, Germany)\\
+	&BX51&Olympus Europa SE \& Co. KG (Hamburg, Germany)\\
+	&Scanning Confocal A1Rsi+ \linebreak Microscope&Nikon Deutschland Gmbh (Düsseldorf, Germany)\\
+\midrule
+photometers&Varioskan Flash& Thermo Scientific (Berlin, Germany)\\
+\midrule
+liquid chromatography&UltiMate 3000 RSLCnano & Thermo Fisher Scientific (Bremen, Germany)\\
+\midrule
+mass spectrometry&Q Exactive Plus& Thermo Fisher Scientific (Bremen, Germany)\\
+\midrule
+chemiluminescence detector&Fusion SL&Vilber Lourmat (Eberhardzell, Germany)\\
+\midrule
+pipetting robot system&Biomek i7 automated workstation&Beckmann Coulter (Krefeld, Germany)\\
+\bottomrule
+\end{longtabu}
+%\end{table}
+
+\subsection{Chemicals}
+
+The used chemicals were provided by Alfa Aesar (Karlsruhe, Germany), Prozomix (Haltwhistle, United Kingdom), Merck KGaA (Darmstadt, Germany), Carl Roth (Karlsruhe, Germany), Sigma Aldrich (Steinheim, Germany), Serva Electrophoresis (Heidelberg, Germany) und Fisher Scientific (Schwerte, Germany).
+
+
+\subsection{Cells}
+
+%\subsubsection{Cell lines}
+
+%The used cell lines are listed in table \ref{Zellen}.
+
+%\begin{table}[H]
+%\centering
+%\caption{List of cell lines.}\label{Zellen}
+%\renewcommand{\arraystretch}{1}
+%\begin{tabularx}{\textwidth}{XXX}
+%\toprule 
+%species&cell line&source\\
+%\midrule
+%\midrule
+%\textit{Homo sapiens}&HEK293TN&BioCAT (Heidelberg, Germany)\\
+%&U251& \textsc{Cockbill} \textit{et al.} \cite{Cockbill2015}\\
+%\bottomrule
+%\end{tabularx}
+%\end{table}
+
+
+\subsubsection{Primary cells}
+
+The used primary cells are listed in table \ref{PrimZellen}.
+
+\begin{table}[H]
+\centering
+\caption{List of primary cells.}\label{PrimZellen}
+\renewcommand{\arraystretch}{1}
+\begin{tabularx}{\textwidth}{p{3cm}p{2cm}XX}
+\toprule 
+Species&genotype&cell type&source\\
+\midrule
+\midrule
+\textit{Mus musculus}&WT &C57BL/6n (PN 3-4 cortical astrocytes)& FEM, Charité Berlin\\
+&\textit{DBN}$^{-/-}$&PN 3-4 cortical astrocytes& \textsc{Willmes} \textit{et al.} \cite{Willmes2017}\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+
+\newpage
+\subsection{Media}
+
+The used media and their composition are listed in table \ref{Medien}.
+
+\begin{table}[H]
+\centering
+{\captionsetup{format=hang}\caption[List of used media and their composition]{List of used media and their composition. All solutions are aqueous.}\label{Medien}}
+\renewcommand{\arraystretch}{1}
+\begin{tabularx}{\textwidth}{XXX}
+\toprule
+Medium&Component&Concentration\\
+\midrule
+\midrule
+standard astrocyte medium & DMEM-GlutaMAX\textsuperscript{\textregistered} &Sol\\
+&FCS&10~\% (v/v)\\
+&P/S&1~\% (v/v)\\
+\midrule
+stallate astrocyte medium &Neurobasalmedium-A	& Sol\\
+				&GlutaMAX\textsuperscript{\textregistered	}		&1~\% (v/v) \\
+				&P/S					&1~\% (v/v) \\
+				&B-27$\texttrademark$	&2~\% (v/v)  \\
+				&HBEGF&5 ng/$\mu$L\\
+\midrule			
+%Neuron medium	&Neurobasalmedium-A	& Sol\\
+%				&GlutaMAX\textsuperscript{\textregistered	}		&1~\% (v/v) \\
+%				&P/S					&1~\% (v/v) \\
+%				&B-27$\texttrademark$	&2~\% (v/v)  \\
+%\midrule				
+\textit{Imaging}-medium&DMEM without Phenol red&\\				
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\newpage
+\subsection{Antibodies}
+
+
+The used primary antibodies are listed in table \ref{PAntikörper}.
+
+\begin{table}[H]
+\centering
+{\captionsetup{format=hang}\caption[List of primary antibodies.]{List of primary antibodies. WB refers to Westernblot. IS refers to Immunostaining.}\label{PAntikörper}}
+\renewcommand{\arraystretch}{1}
+\begin{tabularx}{\textwidth}{XXp{3cm}X}
+\toprule
+Antigen&Antibody&concentration&source\\
+\midrule
+\midrule
+Drebrin&Ms mAb Drebrin M2F6 IgG1	& 1:100 & Enzo (ADI-NBA-110-E)\\
+\midrule
+GFAP&Gp pAb GFAP&1:1000 (WB)& Synaptic Systems\\
+&&1:100 (IS)&\\
+\midrule
+GST1&Rb pAb GST1 41647&1:400 (IS)& GeneTec\\
+\midrule
+Iba1&Rb pAb Iba1 019-19741&1:1000 (IS)&WAKO\\
+&Gp pAb Iba1 234005&1:1000 (WB)&Synaptic systems\\
+\midrule
+MAP2&Ms mAb Map2 M9942&1:100 (IS)&Sigma Aldrich\\
+\midrule
+Podoplanin&Hm mAb Podoplanin eBio8.1.1&1:200 (IS)&invitrogen\\
+\midrule
+S100$\beta$ &Rb pAb S100$\beta$  287 003&1:400 (IS)&Synaptic Systems\\
+\midrule
+Sox9&Ms pAb Sox9 HPA001758&1:400 (IS)&Atlas Antibodies\\
+\midrule
+Tau&Ch pAb Tau ab75714&1:400 (IS)& Abcam\\
+\midrule
+$\alpha$-Tubulin&Ms mAb $\alpha$-Tubulin	 &	1:3000	&Sigma-Aldrich\\
+\midrule
+$\beta$III-Tubulin&Rb pAb $\beta$III-Tubulin T2200 &1:100 (IS)&Sigma-Aldrich\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+
+
+The used secondary antibodies are listed in table \ref{SAntikörper}.
+
+\begin{table}[H]
+\centering
+{\captionsetup{format=hang}\caption[List of secondary antibodies]{List of secondary antibodies.}\label{SAntikörper}}
+\renewcommand{\arraystretch}{1}
+\begin{tabularx}{\textwidth}{Xp{3cm}X}
+\toprule
+Antibody&concentration&source\\
+\midrule
+\midrule
+Anti-chicken-Cy3&1:400& Dianova\\
+\midrule
+Anti-goat-Alexa 488&1:500&Jackson Immuno Reasearch\\
+\midrule
+Anti-guinea pig-Alexa 647&1:500&Dianova\\
+\midrule
+Anti-guinea pig-Cy3&1:400&Dianova\\
+\midrule
+Anti-guinea pig-HRP lgG&1:3000&Santa-Cruz\\
+\midrule
+Anti-hamster-Alexa 488&1:400&Thermo Fisher Scientific\\
+\midrule
+Anti-mouse-HRP lgG  &1:3000&Vector Labs\\
+\midrule
+Anti-mouse-Alexa 488&1:500&Jackson Immuno Research\\
+\midrule
+Anti-mouse-Alexa 647&1:500&Jackson Immuno Research\\
+\midrule
+Anti-rabbit-Alexa 488&1:400&Jackson Immuno Research\\
+\midrule
+Anti-rabbit-HRP lgG&1:3000&CellSignal\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+%\begin{figure}[H]
+%\centering
+%\includegraphics[scale=1]{AmpCar.eps} 
+%\caption{Strukturelle Verwandtschaft von Ampicillin und Carbenicillin.}\label{fig:Antibiotika}
+%\end{figure}
+
+
+
+
+
+
+\subsection{Buffers}
+
+The used buffers are listed in table \ref{Puffer}.
+
+%\begin{table}[H]
+%\centering
+%\caption{Liste der verwendeten Pufferlösungen.}\label{Puffer}
+\renewcommand{\arraystretch}{1}
+\begin{longtabu}{p{4.2cm}XX}
+\caption{List of buffers. All solutions are aqueous.}\label{Puffer}\\
+\toprule
+Buffer&Component&Concentration\\
+\midrule
+\midrule
+PBS Buffer&NaCl&137~m\textsc{m}\\
+		&KCl&2,7~m\textsc{m}\\
+		&Na$_2$HPO$_4$& 4,3~m\textsc{m}\\
+pH 7,4	&KH$_2$PO$_4$& 1,4~m\textsc{m}\\		
+\midrule
+PHEM Buffer	&PIPES&60~m\textsc{m}\\
+			&HEPES&27~m\textsc{m}\\
+			&EGTA&1~m\textsc{m}\\
+pH 7,4		&MgSO$_4$&8~m\textsc{m}\\
+\midrule
+RIPA Buffer &Tris (pH 7.4) & 50~m\textsc{m}\\
+			& NaCl &150~m\textsc{m} \\
+			&Sodium deoxycholate&0,5\% (w/v)\\	
+			&NP 40&1\% (v/v)\\	
+pH 7,4		&SDS&0,1\% (v/v)\\
+\midrule
+TBS-T Buffer&Tris-HCl&5~m\textsc{m}\\
+			&NaCl&15~m\textsc{m}\\
+pH 7,4		&Tween 20 Detergent&0,005\% (v/v)\\
+\midrule
+5x LME Buffer&Astrocyte medium&Sol\\
+&LME&0,3~\textsc{m}\\
+&Tris-HCl (pH 8,5)&20\% (v/v)\\
+\midrule
+Stripping Buffer&\textsc{l}-Glycine&0,2~\textsc{m}\\
+&SDS&0,1\% (v/v)\\
+pH 2,2 &Tween 20&1\% (v/v)\\
+\midrule
+Cell lysis buffer 	& RIPA-Buffer (pH 7,4) & LM\\
+(Immunoblotting)				&Protease Inhibitor Cocktail 3 & 1:50\\
+				&Phosphatase Inhibitor Cocktail& 1:50\\
+\midrule
+\multirow{2}{5cm}{SDS gel elektrophoresis running buffer (pH 8.8)}&Tris-HCl&1.5 \textsc{m}\\
+															&SDS&0.4\% (v/v)\\
+\midrule
+\multirow{2}{5cm}{SDS gel elektrophoresis stacking buffer (pH 6.8)}&Tris-HCl&0.5 \textsc{m}\\
+																&SDS&0.4\% (v/v)\\
+
+\midrule
+ \multirow{3}{5cm}{SDS gel elektrophoresis transfer buffer}&Glycine&190 m\textsc{m}\\
+														&Tris-HCl&19.3 m\textsc{m}\\
+														&MeOH&20\% (v/v)\\
+\bottomrule
+\end{longtabu}
+%\end{table}
+
+
+%kommerzielle Puffer
+%MidoriGreen & \\
+%SDS Puffer&\\
+%Q5 Reaction Buffer&\\
+%3.1 NE Buffer&\\
+%Agarose Gel Ladepuffer&\\
+%T4 Puffer&\\
+%2log Marker&\\
+%Dual unstained&Biorat\\
+%Standard Tag Puffer
+%Thermo Pol Puffer
+%Cut Smart Buffer
+
+
+\newpage
+\subsection{Computer programs}
+
+The used computer programs are listed in table \ref{Computerprogramme}.
+
+
+\begin{table}[H]
+\centering
+{\captionsetup{format=hang}\caption[List of computer programs.]{List of computer programs.}\label{Computerprogramme}}
+\renewcommand{\arraystretch}{1}
+\begin{tabularx}{\textwidth}{p{4cm}p{3cm}X}
+\toprule
+Program&Version&Usage\\
+\midrule
+\midrule
+ImageJ&1.51w&quantification of fluoreszenzmicroscopy images\\
+\midrule
+Prism&5.00(Trial)&graphs\\
+\midrule
+Microsoft Excel &Professional Plus 2016& table calculation\\
+\midrule
+RStudio &1.3.959& statistics \& graphs\\
+\midrule
+Microsoft PowerPoint&Professional Plus 2016&figures\\
+\midrule
+Inkscape&1.0.0beta2&figures\\
+\midrule
+MaxQuant&1.6.0.1  &MS data processing\\
+\midrule
+Perseus&1.6.0.2 &MS data processing and visualisation\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+
+
+\newpage
+\section{Methods}
+
+\subsection{Cell culture}
+
+
+\subsubsection{Coating}
+
+\paragraph{PLO Coating of plastic surfaces} $~$ \\
+
+A cell culture flask was filled with coating reagent (collagene, 0,25\%~(v/v) ; poly-\textsc{d,l}-ornithine hydrobromide, 100~$\mu$g/ml ; acetic acid, 0,06\%~(v/v) ; in PBS; 10~mL) and incubated for 30~min at RT.
+
+
+\paragraph{PLO Coating of glass surfaces} $~$ \\
+
+For the coating of glass surfaces a slightly different protocoll was used. At first the glass cover slips were treated with a polyornithine solution (poly-\textsc{d,l}-ornithine hydrobromide, 30~mg/L, 300~$\mu$L) and incubated for 1~h at 37$^\circ$C. The PLO solution was removed and the cover slips were treated with the coating reagent, which was described in the previous chapter, and incubated for 1~h at RT.
+
+\paragraph{PEI Coating} $~$ \\
+
+Surfaces were wetted by a PEI solution (0,4\% PEI in water) and incubated overnight at 37$^\circ$C. The coating reagent was removed and the surface was rinsed two times with ultrapure water.
+
+\subsubsection{Cultivation of primary stellate astrocyte cultures}
+
+\paragraph{Isolation of astrocytes from brain tissue} $~$ \\
+
+
+Primary astrocytes were isolated from mouse cortices (PN3-4). The preparation of the cortioces was performed in HBSS  buffer with 15~m\textsc{m} HEPES. Trypsine solution (10~mg/mL in HBSS; 1~mL) was added to the cortices, which were then mechanically dissociated by pipetting up and down using a P1000 pipette. The resulting suspension was treated with additional trypsine solution~(2~mL) and incubated for 15~min at 37$^\circ$C. The mixture was diluted with cold HBSS buffer with 15~m\textsc{m}~HEPES, the floating cells were transferred to a fresh tube and diluted with standard astrocyte medium (1~mL per culture flask). The cells were seeded in PLO coated cell culture flasks (1~mL cell suspension per flask) and standard astrocyte medium was added (14~mL per flask). The cells were incubated for 1 week (37$^\circ$C, 5\% CO\textsubscript{2}) but after 1 day the medium was changed.  
+
+
+
+\paragraph{LME-Treatment} $~$ \\
+
+To obtain pure astrocytic cultures, contaminating microglia were removed as previously published, using leucine methyl ester~\cite{Jebelli2015}.
+
+After culturing the astrocytes for one week, 15~mL of 1x LME buffer were added to the cells per culture flask. The cells were incubated (37$^\circ$C, 5\%~CO\textsubscript{2}) for about 40~min. The microglia were detached by gentle tapping against the flask. The medium was removed, the cells were washed with warm HBSS buffer and fresh standard astrocyte medium was added (15~mL). The cells were incubated (37$^\circ$C, 5\% CO\textsubscript{2}) until the day of splitting.
+
+
+\paragraph{Cell splitting of stellate Astrocytes} $~$ \\
+
+The culture medium of the LME treated cells was removed and cells were washed with HBSS buffer (10~mL per well). A trypsine solution (10~mg/mL in HBSS; 4~mL) was added and the cells were detached from the bottom of the flask due to gentle tapping. The cells suspension was transferred to a fresh tube and standard astrocyte medium (8~mL) was added to quench the trypsinization. The cells were spinned down (900~rpm, 5~min) and the supernatant was removed. The cell pellet was washed with stellate Astrocyte medium and afterwards resuspended in stellate astrocyte medium (1~mL per pooled flask). The cells were counted and seeded on PEI coated surfaces in the desired density~\cite{Wolfes2018}.
+
+\newpage
+
+\subsection{Biochemical methods}
+
+
+\subsubsection{Cell lysis for immunoblotting}
+
+The cells were seeded on a 6-well-plate (150,000 cells and 3~mL medium per well) and incubated (37$^\circ$C, 5\% CO\textsubscript{2}) for about one week. For some experiments the cells were scratched (8 times per well) and again incubated for 24~h. The medium was removed and the cells were gently washed with PBS buffer (1~mL per well). The cells were treated with cell lysis buffer on ice (250~$\mu$L/well) scratched into an plastic tube and the cell suspension was rotated at 4$^\circ$C for 20~min. The cell suspension was centrifugated (13.300~rpm, 10~min, 4$^\circ$C) to clear the lysate. The supernatant was transferred to a clean eppendorftube. For westernblotting, Rotiload buffer was added. The sample was boiled at 95 degree for 3 minutes and subsequently stored at -20$^\circ$C . For mass-spec experiments, the supernatant snap frozen in liquid nitrogen and stored at -80$^\circ$C.
+
+
+
+
+\subsubsection{SDS polyacrylamid gel elektrophoresis (SDS PAGE)}
+
+
+The sodium dodecyl sulfate polyacrylamide gel electrophoresis (SDS PAGE) is a standard technique in biochemistry for seperating proteins by their molecular weight. The protein solution is mixed with SDS, a detergent, which results in denaturation of the protein due to the coordination of the surfactant molecules at basic residues and thus eruption of the tertiary structure of the protein. Moreover the protein receives negative charge, in an amount which is proportional to its molecular weight and so on to its speed of migration in a polyacrylamide gel under influence of an electric field.  
+Usually the gel is divided in two parts, the stacking gel and the running gel, which both have different levels of cross-linking. At the beginning the sample is loaded to the stacking gel, which has a low level of cross-linking. The electrophoresis is started with a low voltage to get sharp bands. When the bands reach the running gel, the power is raised and the seperation of the proteins started.
+The composition of running and stacking gel are shown in table \ref{SDS}. The Volumes are calculated for two gels.
+  
+
+\begin{table}[H]
+\centering
+\caption[Composition of running und stacking gel.]{Composition of running und stacking gel. The component acrylamide refers to a mixture of aqueous solutions of acrylamide (30\%) and bisacrylamide (0.8\%) in a ratio of 37.5:1}\label{SDS}
+\renewcommand{\arraystretch}{1}
+\begin{tabularx}{\textwidth}{p{7cm}XX}
+\toprule
+Component&running gel (10\%)&stacking gel (4\%)\\
+&$V$&$V$ \\
+& [mL]&[mL]\\ 
+\midrule
+water&7.92&6.2\\
+running buffer &5&-\\
+stacking buffer&-&2.5\\
+acrylamide&6.66&1.3\\
+10\% (w/v) APS&0.2&0.05\\
+TMEDA&0.02&0.01\\
+\bottomrule
+\end{tabularx}
+\end{table}
+  
+
+It was loaded 5 to 15~$\mu$g of protein per gel pocket. A voltage of 80~V was used to let the proteins pass the stacking gel. After about 20~min the voltage was increased to 125~V. The proteins were separated for about 1~h.   
+  
+  
+\subsubsection{Immunoblotting}
+
+After separation of the protein fractions by SDS PAGE it is possible to transfer them on a nitrocellulose membrane using a technique called immunoblotting. 
+
+The gel was placed on the membrane and the blotting was performed using a current of 400~mA for about 2.5~h. The membrane was treated with \textsc{Ponceau}s reagent to verify the presence of fixed proteins on the membrane. To block unspecific antibody binding sites, the membrane was incubated with 5\% milk in TBS-T for 1 hour at RT. The membrane was rotated at 4$^{\circ}$C overnight with the primary antibody solution (3\% BSA, NaN\textsubscript{3}, in TBS-T, Antibody concentration [Table \ref{PAntikörper}]) and washed three times (10~min each) afterwards with TBS-T buffer. The membrane was rotated with the polyclonal secondary antibody solution (3\% BSA, NaN\textsubscript{3}, in TBS-T, Antibody concentration [Table \ref{SAntikörper}]) for 1~h at RT. The membrane was washed three times (10~min each) with TBS-T buffer and an enhanced chemiluminescence assay (ECL) was performed. 
+
+
+ 
+
+\subsubsection{Stripping of immunoblotting membranes}
+
+To remove previously used primary and secondary antibodies the membrane was incubated for 30~min with stripping buffer at 37$^\circ$C and afterwards blocked in Milk (5\% in TBS-T) for 1~h at RT. 
+
+
+\subsubsection{Fixing of cells}
+
+The medium was removed and the cells, that had been previously seeded on glass cover slips (diameter: 18~mm), were treated with fixing reagent 
+(PFA, 3.7\% (w/v); Saccharose, 4\% (w/v) in PHEM buffer; 750~$\mu$L/cover slip) for 20~min at RT. The fixing reagent was removed and the cover slips were gently washed three times with PBS buffer.
+
+
+
+\subsubsection{Immunocytochemistry}
+
+To stain fixed cells with flourophores a method called immunocytochemistry was used.
+
+The supernatant was removed and the cells were treated with an extracting solution (0.2\% (v/v) Triton X-100 in PBS buffer) for 3~min to permeabelize the cell membranes. The extracting solution was removed and a BSA solution (5\% (w/v) in PBS buffer) was added onto the cells and incubated for 5~min at RT. The BSA solution was removed and the primary antibody solution (concentration of antibody like in table \ref{PAntikörper}, 1\% BSA in PBS buffer) was added (500~$\mu$L per well) to the cover slips and incubated for 1~h. The primary antibody solution was removed and the cover slips were washed (4 times, 5~min each wash) with PBS buffer. The secondary antibody solution (concentration of antibody like in table \ref{SAntikörper}, 1\% BSA in PBS buffer) was added to the coverslips and incubated for 1~h under exclusion of light. The secondary antibody solution was removed and the cover slips were washed (4 times, 5~min each wash) with PBS buffer under exclusion of light. The cover slips were rinsed with ultrapure water and mounted with Mowiol\textsuperscript{\textregistered} on slides.
+
+
+
+
+
+\subsubsection{Surface Biotinylation Assay}
+
+
+The cells were washed three times with icecold PBS buffer (pH=8) and incubated with Biotin solution (EZ-Link\texttrademark \ Sulfo-NHS-SS-Biotin, 1~mg/mL) for 2~h at 4$^\circ$C under gentle agitation. The reaction mechanism of the biotinylation reaction is shown in figure \ref{Biotinylation}. The cells were washed three times with icecold PBS buffer with 100~m\textsc{m} Glycine (10~min per wash) to quench the biotinylation and afterwards three times with icecold PBS buffer (10~min per wash). The cells were scraped into lysis buffer (NP-40, 1\%; SDS, 0.1\%; NaCl, 150~m\textsc{m}; protease inhibitor cocktail, 1:50; in PBS) and sonicated to obtain complete lysis. The lysates were cleared by centrifugation (10~min, 13300~rpm, 4$^\circ$C) and the resulting supernatants were transferred to fresh reaction vials.
+
+
+\begin{figure}[H]
+\centering
+%\includegraphics[scale=1]{Biotinylierung.eps}
+{\captionsetup{format=hang}\caption[Reaction mechanism of the protein biotinylation.]{Reaction mechanism of the protein biotinylation. After nucleophilic attack of the free amine of a lysine residue at the carboxyl carbon atom a tetrahedron intermediat (not shown) is formed. The $N$-hydroxysuccinimid gets eliminated and the biotinylated lysine residue gets released.}\label{Biotinylation}}
+\end{figure}
+
+\subsection{Incubation with magnetic beads}
+
+
+The protein concentration of each sample was determined by bicinchoninic acid (BCA) assay. Neutravidin-magnetic beads (40~$\mu$L per condition) were washed on ice two times with icecold PBS. Equal protein amounts were incubated overnight at 4$^\circ$C under gentle agitation. 
+The beads were washed three times with icecold PBS with 1\%~NP-40 and three times with icecold PBS.
+
+
+
+\newpage
+\subsection{Analytical methods}
+
+\subsubsection{BCA assay}
+
+The BCA assay is a method to quantify the ablolute concentration of solved proteins in an aqueous solution. It was performed following the manufacturers procedure.
+
+
+
+\subsubsection{Chemoluminescence detection}
+
+
+The ECL Western Blotting Substrate Kit by Promega and the Amersham$^\mathrm{TM}$ ECL Select$^\mathrm{TM}$  Western Blotting Detection Reagent by GE Healthcare were used following the instructions of the companies protocol.
+%Kit anschauen 
+
+\subsubsection{Mass spectrometry (stellate Astrocyte Proteomics)}
+
+
+\paragraph{Sample preparation} $~$ \\
+
+For identification and relative quantification of the proteins, the lysates were digested with trypsin, as described previously~\cite{Mueller2020}.
+
+
+\paragraph{Liquid Chromatography-Mass Spectrometry Analysis (LC-MS)} $~$ \\
+
+Tryptic peptides were analyzed by LC-MSMS using a Q Exactive Plus mass spectrometer. Peptide mixtures were fractionated by an Ultimate 3000 RSLCnano instrument with a two-linear-column system. Digests were concentrated onto a trapping guard column. Then, samples were eluted from the analytical nanoLC column. Separation was achieved by using a mobile phase from 0.1\% formic acid (FA, Buffer A) and 80\% acetonitrile with 0.1\% FA (Buffer B) and applying a linear gradient from 120 min including an increase of buffer B from 7.5 to 25\% in 82.5 min followed by 25 to 40\% in 30 min at a flow rate of 300 nL/min.
+ 
+a.) The Q Exactive instrument was operated in the data independent mode as followed:
+
+For the tissue samples, the Orbitrap was configured to acquire 51 x 12 m/z (covering 385-1015 m/z), precursor isolation window DIA spectra (17,500 resolution, AGC target 1e6, maximum inject time 60~ms) using an overlapping window pattern. Precursor MS spectra (m/z 385-1015) were interspersed with 35,000 resolution after 60 ms accumulation of ions to a 1e6 target value in centroid mode, charge +3.
+
+Spectra library generation:
+
+A chromatogram library is generated from the gasphase fractionated (GPF), narrow-window acquisitions of all pooled reference sample. The Orbitrap was configured to acquire 6 runs 51 x 2 m/z (covering 400-500, 500-600, 600-700,700-800, 800-900, 900-1000 m/z) using an overlapping window pattern. The other parameters were adopted as described above.
+
+b.) In the the data dependent mode Q Exactive instrument was operated to automatically switch between full scan MS and MS/MS acquisition. Survey full scan MS spectra (m/z 350-1650) were acquired in the Orbitrap with 70000 resolution (m/z 200) after 30 ms accumulation of ions to a 3 x 106 target value. Dynamic exclusion was set to 40 s. The 10 most intense multiply charged ions (z $\geq$ 2) were sequentially isolated and fragmented by higher-energy collisional dissociation (HCD) with a maximal injection time of 60 ms, AGC 1 x 105 and resolution 17500. Typical mass spectrometric conditions were as follows: spray voltage, 2.1~kV; no sheath and auxiliary gas flow; heated capillary temperature, 275$^\circ$C; normalized HCD collision energy 27\%.
+Additionally, the background ion m/z 445.1200 acted as lock mass.
+
+
+Protein Identification was performed by data-dependant-acquisition (DDA). 
+Relative labelfree quantification of the proteins was performed with MaxQuant software version 1.6.0.1 and default Andromeda LFQ parameter. Spectra were matched to a \textit{mus musculus}-database (17,040 reviewed entries, downloaded from uniprot.org), a contaminant, and decoy database. MS/MS spectra were searched with a precursor mass tolerance of 10~ppm, fragment tolerance of 0.5~Da, trypsin specificity with a maximum of 2 missed cleavages, cysteine carbamidomethylation (Figure \ref{carba}) set as fixed and methionine oxidation as variable modification. Identifications were filtered at 1\% False Discovery Rate (FDR) at peptide level.
+%Perseus 1.6.0.2
+
+
+
+%DIA: Identification and quantification of the proteins was performed with DIANN software (Demichev et al., Nature 2020) and default parameter. Spectra were matched to a from rat kidney samples generated spectra library. MS/MS spectra were searched with a precursor mass tolerance of 10 ppm, fragment tolerance of 0.05 Da, trypsin specificity with a maximum of 1-missed cleavages, cysteine carbamidomethylation set as fixed and methionine oxidation as variable modification. Identifications were filtered at 1% False Discovery Rate (FDR) at peptide level.
+
+
+
+%\begin{figure}[H]
+%\centering
+%\includegraphics[scale=.8]{Carbamylation.eps} 
+%{\captionsetup{format=hang}\caption[Carbamylation.]{Mechanism of cystine carbamylation. Free cystein residues have to be protected to avoid crosslinkings or unfavored side reactions.}\label{carba}}
+%\end{figure}
+
+
+\subsubsection{Mass spectrometry (polygonal Astrocytes surface Proteomics)}
+
+
+\paragraph{Sample preparation (1.Trial)} $~$ \\
+
+Beads were resuspended in 30ul denaturation buffer (6~\textsc{m} urea, 2~\textsc{m} thiourea, 50~m\textsc{m} HEPES pH~8) and incubated with 10~m\textsc{m} (final) DTT (Sigma) for 30~min at room temperature (reduction). Alkylation of cysteine residues was performed by incubation with 40~mM (final) chloroacetamide (Sigma) for 30 min at room temperature. 120~$\mu$L HEPES buffer was added in order to reduce urea concentration below 2~\textsc{m} (trypsin does not tolerate higher concentration). 1~$\mu$g sequence grade trypsin (Promega) and 1ug LysC (Wako) was added to the samples overnight (room temperature) in order to digest the bead bound proteins. The supernatant (containing the tryptic peptides) was collected in a fresh tube and acidified with trifluoro acid (1\% final). Beads were incubated with 50ul 50~m\textsc{m} HEPES and supernatant was combined with first supernatant. Peptides were desalted and cleaned up using StageTips protocol (PMID:12585499). 
+
+\textbf{Stage tip on house protocol:} 
+
+Desalting columns were prepared by punching out 2 small discs of C18 Empore Filter and ejecting them into a P200 pipette tips. These columns were conditioned by washing them with 50~$\mu$L  methanol (centrifugation for 2~min with 5000~rpm). Methanol was washed out by passing 100~$\mu$L Buffer A (3\% acetonitrile, 0.1\% formic acid (FA) in H$_2$O bidest.) through the disc (centrifuge for 2~min with 5000~rpm). Acidified peptide samples were added to the stage tips columns and passed through by centrifugation (2~min with 5000~rpm). The columns were washed 2 times with Buffer A (1000~$\mu$L, 2~min with 5000~rpm). For MS analyses peptides were eluted from columns with 80~$\mu$L Buffer B (0.1\% formic acid, 90\% acetonitrile in in H$_2$O bidest.) and dried down using a speed-vac. Clean peptide samples were resuspended in 12~$\mu$L buffer A.
+ 
+\paragraph{Sample preparation (2.Trial)} $~$ \\
+
+Denaturation buffer (8~\textsc{m} urea, 50~m\textsc{m} HEPES pH 8) was added to the eluates (2~\textsc{m} final concentration), followed by 10~m\textsc{m} (final) DTT (Sigma) for 30~min at room temperature (reduction). Alkylation of cysteine residues was performed by incubation with 40~m\textsc{m} (final) chloroacetamide (Sigma) for 30~min at room temperature. 1~$\mu$g sequence grade trypsin (Promega) and 1~$\mu$g LysC (Wako) was added to the samples overnight (room temperature). The samples were acidified with trifluoroacetic acid (1\% final concentration) and desalted as described below, using StageTips protocol (PMID:12585499). 
+
+ 
+
+\paragraph{LC-MS Analysis (1. Trial)} $~$ \\
+
+Peptide samples were eluted from StageTips (80\% acetonitrile, 0.1\% formic acid), and after evaporating the organic solvent peptides were resolved in sample buffer (3\% acetonitrile/ 0.1\% formic acid). For each sample one analytical run with injecting 5~$\mu$L of peptide material was performed.  Peptide separation was done on a 20 cm reversed-phase column (75~$\mu$m inner diameter, packed with ReproSil-Pur C18-AQ; 3~$\mu$m, Dr. Maisch GmbH) using a 90 min gradient with a 250 nL/min flow rate of increasing Buffer B concentration (from 2\% to 60\%) on a High Performance Liquid Chromatography (HPLC) system (ThermoScientific). Peptides were measured on a Thermo Orbitrap Fusion instrument (Thermo). Peptide precursor survey scans were performed at 120K resolution with a 2 x 105 ion count target. Tandem MS was performed by isolation at 1.6 m/z with the quadrupole, HCD fragmentation with normalized collision energy of 32, and rapid scan MS analysis in the ion trap. The MS2 ion count target was set to 1 x 104 and the max injection time was 300 ms. The instrument was run in top speed mode with 3 s cycles. Dynamic exclusion was set to 60 sec. Only peptides with charge state between 2 and 7 were considered for fragmentation.
+
+\paragraph{LC-MS Analysis (2. Trial)} $~$ \\
+
+Peptide samples were eluted from StageTips (80\% acetonitrile, 0.1\% formic acid), and after evaporating the organic solvent peptides were resolved in sample buffer (3\% acetonitrile/ 0.1\% formic acid). For each sample one analytical runs with injecting 5~$\mu$L of peptide material were performed. Peptide separation was done on a 20 cm reversed-phase column (75~$\mu$m inner diameter, packed with ReproSil-Pur C18-AQ; 3~$\mu$m, Dr. Maisch GmbH) using a 90 min gradient with a 250 nl/min flow rate of increasing Buffer B concentration (from 2\% to 60\%) on a High Performance Liquid Chromatography (HPLC) system (ThermoScientific). Peptides were measured on a Q Exactive Plus instrument (Thermo). The mass spectrometer was operated in the data dependent mode with a full scan in the Orbitrap (70K resolution; 3 x 106 ion count target; maximum injection time 50 ms) followed by top 10 MS2 scans using higher-energy collision dissociation (17.5 K resolution, 1 x 105 ion count target; 1.6 m/z isolation window; maximum injection time: 50 ms). Only peptides with charge state between 2 and 7 were considered for fragmentation. Dynamic exclusion was set to 30 sec.
+
+
+
+\paragraph{Data Analysis} $~$ \\
+
+Raw data was processed using MaxQuant software package (v1.6.3.4) (PMID:27809316). The internal Andromeda search engine was used to search MS2 spectra against a decoy human UniProt database (MOUSE.2019-07) containing forward and reverse sequences. The search included variable modifications of oxidation (M), N-terminal acetylation, deamidation (N and Q), biotinylation (K) and fixed modification of carbamidomethyl cysteine. Minimal peptide length was set to six amino acids and a maximum of three missed cleavages was allowed. The FDR (false discovery rate) was set to 1\% for peptide and protein identifications. Unique and razor peptides were considered for quantification. Retention times were recalibrated based on the built-in nonlinear time-rescaling algorithm. MS2 identifications were transferred between runs with the “Match between runs” option, in which the maximal retention time window was set to 0.7 min. The integrated LFQ quantitation algorithm was applied.   
+
+\paragraph{Statistical Analysis (1. Trial)} $~$ \\
+
+Data was filtered for reverse hits, proteins only identified by site and contaminants, as well as minimum valid value of 4 in at least one group. After log2 transformation, missing values were imputed with random numbers from a normal distribution whose mean and standard deviation were chosen to best simulate low abundance values below the noise level (width = 0.3; shift = 1.8). Two sample T-Test comparison was performed in order to define specifically enriched proteins. Significance corresponding to an FDR of 5\% (Biotin versus no Biotin) or 20\% (WT versus KO) was determined by a permutation-based method~\cite{Tusher2001}. Alternative, a p-value cut off of 0.05 (-log10= 1.3) was used to annotate differential surface exposed proteins.
+
+\paragraph{Statistical Analysis (2. Trial)} $~$ \\
+
+Data were filtered for reverse hits, proteins only identified by site and contaminants, as well as minimum valid value of 3 in at least one group. After log2 transformation, missing values were imputed with random numbers from a normal distribution whose mean and standard deviation were chosen to best simulate low abundance values below the noise level (width = 0.3; shift = 1.8). Two sample T-Test comparison was performed in order to define specifically enriched proteins. Significance corresponding to an FDR of 5\% (Biotin versus no Biotin) or 5\% and 20\% (WT versus KO) was determined by a permutation-based method~\cite{Tusher2001}. For WT versus KO comparison only significantly biotin enriched proteins were considered. In addition to FDR based significance cut off, a p-value cut off of 0.05 (-log10= 1.3) combined with fold change cut off (abs log2 of 2) was used to annotate differential surface exposed proteins.
+
+\newpage
+\section{Results}
+
+\subsection{Cell Culture of stellate Astrocytes}
+
+To investigate the changes in proteome of astrocytes during astrogliosis it was nescessary to establish a stable cell culture modell. \textit{In vitro} cultured polygonal astrocytes differ substantially from astrocytes \textit{in vivo} consindering their morphology, which is distinctly less branched. Moreover polygonal Astrocytes were found to be a lot more reactive in the first place, displayed by high levels of GFAP in untreated, immunostained cells. This \textit{a priori} reactivity seemed to exacerbate the discriminability of untreated or unscratched and intentionally reactive cells.
+So we decided to use a culturing modell for stellate astrocytes, which, in contrast to polygonal astrocytes are more similar to astrocytes \textit{in vivo} and less \textit{a priori} reactive~\cite{Wolfes2017}. 
+
+The cells were isolated from mouse cortices (PN3-4) and cultivated following the stellate astrocyte protocol. The cells were plated on glass cover slips an stained with different antibodies to discover the abundance of several astrocyte markers respectivly the absence of markers for different cell types of the CNS.
+
+As depicted in figure \ref{stellstain} stellate and polygonal astrocytes show drastic differences in morphology. To achieve this stellate morphology astrocytes have to be cultivated under strict exclusion of FCS and low concentrations of heparin-binding EGF-like growth factor (hbEGF). Whilst the abundance of FCS prohibits the formation of stellate morphology it has to be exchanged by hbEGF. Albeit hbEGF triggers the formation of stellate morphology high concentrations were found to promote development into radial glia~\cite{Wolfes2017}.  
+
+%warum kein FCS
+%was macht hbegf
+
+We confirmed the presence of well-known astrocytic markers, including GFAP, GST1 and Sox9 in stellate astrocytes (figure \ref{stellstain}). Whilst GFAP and GST1 are both distributed in processes Sox9 is mostly located in the nucleus. Map2, a marker for neuron dendrites is almost not detectable.
+
+%Sox9 in polygonal astrocytes
+
+
+
+
+ 
+%\begin{figure}[H]
+%\centering
+%\includegraphics[scale=.1]{StellateAstrosfinal.png} 
+%{\captionsetup{format=hang}\caption[Morphologic overview of stellate Astrocyte cultures]{\textbf{Morphologic overview of stellate Astrocyte cultures.} \textbf{A} phase contrast (grays) of stellate Astrocytes (left) and polygonal astrocytes (right) including cartoons of single cells. Different conditions of cultivation result in tremendously different morphology. \textbf{B} Immunostainings of stellate astrocyte cultures. GFAP (top left, red) a marker of astrocytes shows a strong signal. GST1 (top right, green) is also an astrocyte marker. Sox9 (bottom left, cyan) is mainly located in the nucleus. Map2 (bottom right, greys, inverted) as a neuron dendrite marker is almost not detectable. Scale bars: 20~$\mu$m.}\label{stellstain}}
+%\end{figure}
+
+
+To get rid of microglia a LME-treatment was performed. Leucine methyl ester was found to lead to lysosomal disruption and subsequent apoptosis after internalisation in microglia but not in astrocytes~\cite{Jebelli2015}. The immunoblotting validated the absence of Iba1, a microglia marker after LME-treatment. The results are shown in figure \ref{IbaBlot}.
+ 
+
+%\begin{figure}[H]
+%\centering
+%\includegraphics[scale=.15]{IbaBlot2.png} 
+%{\captionsetup{format=hang}\caption[Absence of Iba1 after LME-treatment.]{\textbf{Absence of Iba1 after LME-treatment.}   \ \textbf{A} Immunoblots of GFAP and Iba1 and loading control ($\alpha$-Tubulin). LME treatment leads to depletion of Iba1, a microglia marker. \textbf{B} Quantification.}\label{IbaBlot}}
+%\end{figure}
+
+
+\subsection{Proteomics of stellate Astrocytes}
+
+After establishing a robust \textit{in vitro} model of stellate astrocytes, we assesed changes of the proteome upon a scratch-wound injury in astrocytes. We established this \textit{in vitro} astrogliosis model to observe the resulting proteome changes by a mass spectromotry based approach. In initial experiments we struggled with low protein concentrations, so to setup a suitable protocol for MS analysis, we compared the protein amount obtained after cell lysis with two different buffers.
+
+
+\subsubsection{Buffer test}
+
+We chose to test two lysis buffers, 1\% NP-40 in PBS-buffer and RIPA-buffer. The cell lysis was performed following the cell lysis protocol and the resulting protein concentrations of the technical triplicats are shown in figure \ref{buffertest}. Albeit the protein concentrations vary strongly for NP-40 in PBS and were relatively similar for RIPA-buffer, it seemed to be the better option since RIPA buffer contains several reagents, that may interfer with the mass spectrometry.
+
+
+
+% the average protein concentration was however higher for NP-40, which is why we choosed NP-40 in PBS as lysis buffer in following experiments.  
+
+
+
+%\begin{figure}[H]
+%\centering
+%\includegraphics[scale=.2]{BufferTest.png} 
+%{\captionsetup{format=hang}\caption[Protein and peptide concentration of MS samples.]{\textbf{Protein and peptide concentration of MS samples.} The concentrations of the buffer test (left) vary strongly for NP-40 in PBS but were relatively similar for RIPA-buffer. After trypsin digest, no peptides were found in samples 2 and 3 lysed by NP-40 in PBS and in sample 1 lysed by RIPA-buffer. The concentrations of the MS samples are shown on the right side. After trypsin digestion their was no peptide concentration detectable in the scratched sample 2.}\label{buffertest}}
+%\end{figure}
+
+
+
+
+\subsubsection{MS experiments of unscratched and scratched stellate astrocytes}
+
+
+The stellate astrocytes were cultured on big petri-dishes to achieve high amounts of solved proteins and half of them were scratched. The protein concentration of each sample was determined (figure \ref{buffertest}) and lysates subsequently preparated following the SP3 protocoll by a pipetting robot system and digested on beads by trypsin. After the digestion the concentration of peptides in each sample (including the buffer test samples) was determined. The results (not shown) indicate that the digest of the scratched sample 2 did not work for unknown reason.
+
+The samples were measured with label free Quantification (LFQ) and processed with MaxQuant and Perseus. 
+
+As depicted in the multi scatter plot in figure \ref{StellExp} A, scratched sample 2 differs severely from the other samples. This is because of the low protein concentration and with that the huge influence of the imputation of missing values during the MS data processing.
+
+However as shown in figure \ref{StellExp} several proteins were found to be enriched due to the scratch wound injury which are moreover listed in table \ref{Stelltable} with corresponding KEGG annotations. 
+
+
+%\begin{figure}[H]
+%\centering
+%\includegraphics[scale=.3]{StellateExp.png} 
+%{\captionsetup{format=hang}\caption[MS analysis of proteome changes during astrogliosis.]{\textbf{MS analysis of proteome changes during astrogliosis} \textbf{A} Multi scatter plot of LFQ intensities of all samples. Scratched sample 2 differs severely from all other samples because of the strong influence of the imputation. \textbf{B} Volcano plot shows enriched proteins in scratched and unscratched samples (FDR 5\%).}\label{StellExp}}
+%\end{figure}
+
+
+
+
+\begin{table}[H]
+\centering
+\caption[Enriched Proteins in reactive stellate Astrocytes.]{Enriched Proteins upon scratch wound injury with KEGG annotations. Proteins are listed in order of their detection score.}\label{Stelltable}
+\renewcommand{\arraystretch}{.8}
+\begin{tabularx}{\textwidth}{p{.5cm}p{2cm}Xp{9cm}}
+\toprule
+&Gene name& Peptides & KEGG annotations \\ 
+\midrule
+&&&\\
+&Golga3&1&-\\
+&Glrx3&22&-\\
+\tabrotate{Unscratched}&&&\\
+\midrule
+&Denr&5&-\\
+&Ndufa7&2& \textsc{Alzheimer}s disease; \textsc{Huntington}s disease; Oxidative phosphorylation; \textsc{Parkinson}s disease\\
+&Igbp1&6&-\\
+&Sccpdh&7&-\\
+&Ube3a&3&Ubiquitin mediated proteolysis\\
+&Cmya5&2&-\\
+&Cul3&7&Ubiquitin mediated proteolysis\\
+&Exoc4&6&Tight junction\\
+\tabrotate{Scratched}&Apoa1bp&4&-\\
+&Gna13&7&Long-term depression; Regulation of actin cytoskeleton; Vascular smooth muscle contraction\\
+&Bloc1s5&1&-\\
+&Rnmt&4&mRNA surveillance pathway\\
+&Tapbp&5&Antigen processing and presentation\\
+&Pdxdc1&5&-\\
+&Cluh&8&-\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+
+We could show that in our \textit{in vitro} stellate astrocyte cell culturing model certain proteins get upregulated upon scratch injury.  
+
+
+\subsection{Surface Proteomics of polygonal Astrocytes}
+
+The actin binding protein Drebrin was recently found to have an influence on membrane trafficking of certain proteins, especially integrins. In comparison to DBN KO mice WT mice showed higher amounts of $\beta$1-Integrin, which is crucially important for the formation of focal adhesions, at the cell surface after scratch wound injury~\cite{Schiweck2020}. Thus we wanted to validate the integrin enrichment and moreover discover other candidates of Drebrin-dependant membrane trafficking during astrogliosis by mass spectrometry. 
+
+
+\subsubsection{Initial Experiment}
+
+We used a surface biotinylation-dependant protocoll to quantify the potential enrichment of surface proteins in either WT or DBN KO astrocytes. As biotinylation reagent EZ-Link\texttrademark \ Sulfo-NHS-SS-Biotin by Thermo Scientific\texttrademark \ was used. This reagent is unable to pass the cytoplasma membrane because of its high polarity, so it is only possible to interact with outer membrane compounds. Secondly its linker contains a disulfide bond, which is easily cleavable by thiols. The biotinylation reaction is driven by the formation of the resulting, thermodynamically stable amid bond, that is formed by the nucleophilic attack of a lysins amine at the carbonylcarbon of the ester bond (see Figure \ref{Biotinylation}).    
+
+
+The validation of successful biotinylation was performed by \textsc{Ponceau}-staining and immunoblotting as shown exemplatory in figure \ref{BiotinBlot}.
+
+ 
+
+%\begin{figure}[H]
+%\centering
+%\includegraphics[scale=.2]{BlotPonceau.png} 
+%{\captionsetup{format=hang}\caption[Confirmation of Surface Biotinylation.]{\textbf{Confirmation of Surface Biotinylation.}    \textsc{Ponceau}-stainings and immunoblots of MS samples. Immunoblotting was performend with non reducing loading buffer to protect the cleavable linker and retain the biotinylation.}\label{BiotinBlot}}
+%\end{figure}
+
+
+
+The samples were loaded on neutravidin beads, digested with trypsin and measured by data dependant MS. Statistical analysis of biotinylated versus unbiotinylated samples (FDR 5\%) revealed a number of 978~enriched proteins in WT samples and 858~enriched proteins in DBN KO samples. In total 1162 proteins were found to be biotin-enriched including several integrins (figure \ref{Bioenr1}). A comparison of these 1162 biotin-enriched proteins revealed 16 DBN~KO-enriched and 15 WT-enriched proteins (p=0.05, fold change:~2~fold). However integrins were not found to be significantly enriched in one genotype (figure \ref{GenEnr1}). WT- and DBN KO-enriched proteins are shown in the heatmap in figure \ref{GenEnr1} and are also listed in table \ref{Biotintable1}. Moreover the number of unique peptides and certain properties like membrane association, or appearence at the cell surface or plasma membrane are depicted.    
+
+
+
+%\begin{figure}[H]
+%\centering
+%\includegraphics[scale=.2]{SampleValidation2.png}
+%{\captionsetup{format=hang}\caption[Confirmation of sample labelling and biotinylation dependent enrichment] {\textbf{Confirmation of sample labelling and biotinylation dependent enrichment.} \textbf{A} Heatmap of DBN abundance in measured samples. Confirmation of WT and DBN KO samples. \textbf{B-C} Volcano plots of WT and DBN KO samples. Several proteins in general (red) and membrane associated proteins in particlar (light green) are significantly enriched (FDR 5\%) in biotinylated sample fraction, integrins are highlighted in dark green and DBN is shown in blue.}\label{Bioenr1}}
+%\end{figure}
+
+
+
+
+
+%\begin{figure}[H]
+%\centering
+%\includegraphics[scale=.4]{Enriched2.png} 
+%{\captionsetup{format=hang}\caption[Enrichment of several Proteins.]{{\textbf{Enrichment of several Proteins.} \textbf{A} Volcano plot of WT and DBN KO Samples. Both genotypes show enrichment (FDR 20\%, filled red circle; p-value 0.05/fold change 2 fold, red circles) of several proteins (15 in WT, 16 in KO, 80\% of them are membrane proteins). Significant differences between WT and DBN~KO in integrin levels were not detectable. \textbf{B} Heatmap of enriched proteins in biotinylated WT and DBN KO samples.}\label{GenEnr1}}}
+%\end{figure}
+
+
+
+\begin{table}[H]
+\centering
+\caption[Enriched Proteins upon surface biotinylation.]{Enriched Proteins upon surface biotinylation in WT and DBN KO Astrocytes. 80\% of the enriched Proteins are membrane-associated.}\label{Biotintable1}
+\renewcommand{\arraystretch}{.8}
+\begin{tabularx}{\textwidth}{p{.5cm}p{3cm}XXXX}
+\toprule
+&Gene name& Peptides & Membrane & Plasma membrane& Surface\\ 
+\midrule
+&Mib1&4&+&+&\\
+&Phldb2 &30&+&+&\\
+&Ehd2& 21&+&+&\\
+&Pip4k2b&6&+&+&\\
+&Grb2&2&+&+&\\
+&Capn1&4&+&+&\\
+&Ccl8&18&+&&\\
+&Cox6c&2&+&&\\
+&Pycr1&7&+&&\\
+\tabrotate{WT enriched}&Eef1d&9&+&&\\
+&Gigyf2&9&+&&\\
+&Flot2&12&+&&\\
+&Dync1i2&3&+&&\\
+&Serpine1&23&&&\\
+&Hprt1&4&&&\\
+\midrule
+&Gm8909;H2-Bl&8&+&+&+\\
+&Ntrk2&2&+&+&+\\
+&Pdia6&11&+&+&\\
+&B2m&3&+&+&\\
+&Cd200&5&+&+&\\
+&H2-K1&8&+&&+\\
+&Pitpnm1&5&+&&\\
+&Keap1&8&+&&\\
+&Prkab1&1&+&&\\
+&Pak2&1&+&&\\
+\tabrotate{DBN KO enriched}&Iqsec1&15&+&&\\
+&Smarcd2;Smarcd3&13&+&&\\
+&Kiaa1671&9&&&\\
+&Colec12&2&&&\\
+&Arhgap23&11&&&\\
+&Cdc42bpg&18&&&\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+
+\newpage
+
+\subsubsection{Second trial with cleavage of biotin linker}
+
+In comparison to the nonbiotinylated samples only 40\% more proteins were found to be biotin-enriched in the intentionally biotinylated samples. This indicates a lot of unspecific binding to the neutravidin beads.
+
+To reduce the problem of unspecific binding to the beads, the biotin linker was cleaved by an incubation step with DTT and the trypsin digest was performed with the protein solution without magnetic beads. The cleavage of the biotin linker enriches the ratio of intentionally bound proteins in the analysed samples, because only those proteins, which were initially at the cell surface had been biotinylated and were so able to be detached from the linker by cleaving the disulfide bond.
+
+
+Statistical analysis of biotinylated versus unbiotinylated samples (FDR 5\%) revealed a number of 2402 enriched proteins in WT samples. As in the initial experiment a lot of Integrins were found to be enriched (figure \ref{Bioenr2}).
+
+
+
+%\begin{figure}[H]
+%\centering
+%\includegraphics[scale=.5]{Samples.png} 
+%{\captionsetup{format=hang}\caption[Biotin dependent enrichment of several proteins in WT samples in second trial.]{\textbf{Biotin dependent enrichment of several proteins in WT samples in second trial}
+%\textbf{A}~Heatmap of WT samples shows enrichment of several integrins in WT biotinylated samples.
+%\textbf{B}~Volcano plot of WT samples. Several proteins in general (red) and membrane associated proteins in particlar (light green) are significantly enriched (FDR 5\%) in biotinylated sample fraction, integrins are highlighted in dark green and DBN is shown in blue.}\label{Bioenr2}}
+%\end{figure}
+
+The cleavage of the biotin linker after incubation with the neutravidin beads resulted in the loss of several unspecific bound proteins. We found over 2000 proteins to be significantly biotin-enriched in WT astrocytes with a FDR of only 5\% whilst we found only about 850 in previous measurements. The ratio of enriched proteins found in intentionally biotin-enriched and control samples was tremendously increased.  
+
+%\begin{figure}[H]
+%\centering
+%\includegraphics[scale=.25]{EnrichmentExp2.png} 
+%{\captionsetup{format=hang}\caption[Enrichment of several proteins in second trial.]{\textbf{Enrichment of several proteins in second trial.} \textbf{A} Volcano plot of WT and DBN KO Samples. Both genotypes show enrichment (FDR 1\%, filled circles resp. FDR 5\%, empty circles) of several proteins (FDR 1\%: WT 32, DBN KO 28). Moreover most integrins show also enrichment in either WT oder DBN KO samples. \textbf{B} Heatmap of enriched Proteins in WT samples.}\label{GenEnr2}}
+%\end{figure}
+
+
+%Unfortunately the non-biotinylated fraction of the DBN KO samples was not suitable as valid control because of a mistake during the surface biotinylation assay, so only the WT samples could be analyzed properly. Due to limitation of time and resources the experiments could not be repeated.
+
+
+%For the comparison of WT and DBN KO samples, the KO samples were normalized against the unbiotinylated WT samples, which leads to a systematic uncertainty. 
+
+%A comparison of the 2776 biotin enriched proteins revealed 32 WT-enriched proteins for an FDR of 1\% respectivly 201~WT-enriched proteins for an FDR of 5\% with several integrins amongst them (figure \ref{GenEnr2}). WT-enriched proteins are shown in the heatmap in figure \ref{GenEnr2} and are also listed in table \ref{Biotintable2}. Moreover the number of unique??? peptides and certain properties like membrane association, or appearence at the cell surface or plasma membrane are depicted. 
+
+
+%\begin{table}[H]
+%\centering
+%\caption[Enriched Proteins.]{Enriched Proteins, surface biotinylation}\label{Biotintable2}
+%\renewcommand{\arraystretch}{.8}
+%\begin{tabularx}{\textwidth}{p{.5cm}p{3cm}XXXX}
+%\toprule
+%&Gene name& Peptides & Membrane & Plasma membrane& Surface\\ 
+%\midrule
+%&Lmnb1&&&&\\
+%&Dek&&&&\\
+%&Siglec1&&&&\\
+%&Ptpn6&&&&\\\\
+%&Gpnmb&&&&\\\\
+%&Gyk&&&&\\
+%&Hmgcs1&&&&\\
+%&Poldip2&&&&\\
+%&Gpalpp1&&&&\\
+%&Chst2&&&&\\
+%&C5ar1&&&&\\
+%&Ace&&&&\\
+%&Slc1a3&&&&\\
+%&Cd180&&&&\\
+%&Itgam&&&&\\
+%&Fcer1g&&&&\\
+%\tabrotate{WT enriched}&Itgb2&&&&\\
+%&Gria3&&&&\\
+%&Fabp7&&&&\\
+%&Slc4a4&&&&\\
+%&Slc1a2&&&&\\
+%&Alpe&&&&\\
+%&Podxl&&&&\\
+%&Cspg5&&&&\\
+%&Acot1&&&&\\
+%&Cxadr&&&&\\
+%&Emb&&&&\\
+%&Atp1b2&&&&\\
+%&Osmr&&&&\\
+%&Hepacam&&&&\\
+%&Gpcr5b&&&&\\
+%&Ugt1a6&&&&\\
+%\bottomrule
+%\end{tabularx}
+%\end{table}
+
+
+\subsection{Drebrin expression in rats spinal cord injury}
+
+Astrogliosis is a phenomenon that is not exclusively occuring in the brain. Astrocytes are spreaded across the hole CNS, so traumatic injuries in the spinal cord can also lead to the activation of astrocytes. 
+
+Here we examined the abundance of Drebrin after spinal cord injury (SCI) in rat spinal cords after 9 or 12 weeks, respectively. The spinal cords were stained by immunohistochemistry. As shown in figure \ref{SCI} Drebrin and GFAP show both strong intensities near the injury site, but do not colocalize. Uninjured tissue shows very low intensity of Drebrin and also less GFAP signal. 
+
+The Quantification of the GFAP intensities revealed a p-value of 0.1 in a \textsc{Wilcoxon-Mann-Whitney} test for 9 weeks after SCI (figure \ref{SCI} C) and a p-value of 0.072 in a two-sided t-test for 12 weeks after SCI (figure \ref{SCI} D). The Quantification of the  Drebrin intensities revealed a p-value of 0.077 in a two-sided t-test for 9 weeks after SCI (figure \ref{SCI} E) and a p-value of 0.075 in a two-sided t-test for 12 weeks after SCI (figure \ref{SCI} F). 
+
+Despite no protein level was found to be significantly altered there are clear trends in increasing protein levels of GFAP and Drebrin recognisable. Further animals are needed to validate if protein levels are significantly increased.
+
+Nevertheless these findings indicate, that the upregulation of Drebrin due to injury is not restricted to the brain, but moreover a phenomenon of the whole CNS. Additionally this is a first clue that our findings of Drebrin in mouse astrocytes are also transferable to other mammalian species, as we observed Drebrin changes in mouse and rat astrocytes. 
+
+%\begin{figure}[H]
+%\centering
+%\includegraphics[scale=.05]{SCIFigure.png} 
+%{\captionsetup{format=hang}\caption[Immunohistochemistry of rat spinal cord injury.]{Immunohistochemistry of rat spinal cord injury. \textbf{A-B} GFAP in red, DBN in green. \textbf{A} Injury site. Strong signals of GFAP and DBN. Zoom shows absence of DBN in astrocytic processes. \textbf{B} Distal view. Distribution of DBN differs harshly from proximal injury site. \textbf{C-F} Quantification.
+% Scale bars 20~$\mu$m.}\label{SCI}}
+%\end{figure}
+
+
+\newpage
+\section{Discussion}
+
+Astrogliosis is correlated with several neuropathological conditions like trauma, ischemic damage and neuroinflammation or neurodegenerative diseases such as \textsc{Alzheimer}s disease, \textsc{Parkinson}s disease and multiple sclerosis~\cite{Pekny2014}. So understanding the molecular processes during astrogliosis is crucially important to develop a holistic understanding of these pathologies. 
+
+\subsection{Cell Culture of stellate Astrocytes}
+
+To do so we established a new cell culture model based on the so called AWESAM-protocoll~\cite{Wolfes2018} in our lab to stablely produce \textit{in vivo}-like, stellate astrocytes. 
+
+We could validate that our astrocyte cultures were free from neurons and microglia via immunostainings and immunoblotting experiments. We could observe a rather high abundance of GFAP aswell as of GST1 and Sox9, which are all well known Astrocyte markers~\cite{Schiweck2018}.
+
+%which is a marker of reactive astrocytes, which indicates that albeit their stellate morphology and \textit{in vivo}-likeness these astrocytes have an \textit{a priori} reactivity. 
+
+Map2, a neuron dendrite marker, was almost not detectable indicating a pure astrocytic culture.
+
+Microglia could be selectively removed by performing a LME treatment. LME is internalized by microglia and induces lysosomal disruption and subsequent apoptosis~\cite{Jebelli2015}. The absence of microglia could be validated by immunoblotting experiments.
+
+\subsection{Proteomics of stellate Astrocytes}
+
+After establishing a stable cell culture model of stellate astrocytes it was possible to start with mass spectrometric analyses. To achieve a high protein concentration two lysis buffers were tested in initial experiments. 
+
+The BCA assay of the lysates revealed almost no difference between the two tested lysis buffers.
+
+Albeit 1\% NP-40 in PBS buffer led to a rather strong variation in protein concentration. It was chosen for following experiments, because RIPA buffer contains reagents, that may interfere negatively with the mass spectrometry. 
+
+
+
+
+%as the better option concerning the average protein concentration. The strong variation of the concentration values are propably due to the experimantal setup. Before the lysis the cells were trypsinized to remnove them from the plastic surface of the culture dish. The cell suspensions were centrifugated and each resulting cell pellet was devided into two new ones, which were both lysated with either NP-40 in PBS- or RIPA-buffer. It could be possible, that the resuspension of the cell pellets during the devision was not homogenious, so that the amount of lysed cells were different for the two buffer conditions. 
+
+However NP-40 in PBS buffer led to protein concentrations of around 500~ng/$\mu$L in the MS samples. 
+
+All samples were preparated following the SP3 protocol by the pipetting robot and subsequently digested with trypsin. The peptide concentrations which were measured right after the incubation with trypsin indicate that the digest did not work for scratched sample 2 what is probably due to a malfunction of the robotic pipetting system. The other samples were digested properly. Moreover the lysis buffer test samples 2 and 3 (NP-40) and sample 1 (RIPA) were also free of any peptides. That can be explained by the already at the beginning very low protein concentrations.        
+
+The MS analysis revealed several proteins to be significantly enriched due to scratch wound injury. However the peptide concentration of the scratched sample 2 were so low, that the influence of the imputation of missing values has a massive influence on the whole analysis. So that these experiments have to be repeated several times to discover valid astrogliosis markers. Nevertheless these initial findings are worth to be surveyed.
+
+The KEGG annotation revealed one enriched protein to be correlated with \textsc{Alzheimer}s disease, \textsc{Huntington}s disease and \textsc{Parkinson}s disease. The \textit{ndufa7} gene encodes for a subunit of the respiratory complex~I which is also known as NADH dehydrogenase and is located in the inner mitochondrial membrane~\cite{Stryer2015, Signes2018}. However \textit{ndufa7} was found to be downregulated in late onset \textsc{Alzheimer}s disease~\cite{Adav2019}.
+  
+Another protein that was found to be enriched is Sec8, encoded by \textit{exoc4}, which is part of the so called exocyst protein complex. This multi protein complex is correlated with exocytosis in particular but studies indicate its influence on     several other cellular processes such as polarized cell migration, cytokinesis, ciliogenesis and autophagy~\cite{Wu2015, Letinica2009}.
+Moreover the exocyst complex was found to be localized in areas of active membranbe expansion. That could be an indicator for its involvement in astrogliosis which is characterised by inherent cell hypertrophy. Additionally reactive astrocytes are known for their active secretion of several either growth promoting or inhibitory factors~\cite{Zamanian2012, Karimi-Abdolrezaee2012} which requires a strict regulation of exocytosis, a key function of the exocyt complex.
+
+Another scratch enriched protein was Bloc-1~subunit~5 a subunit of the biogenesis of lysosome-related organelles complex-1 (BLOC-1). The multiprotein complex is critical for the biogenesis of lysosome-related organelles and moreover associated with protein trafficking through tubular endosomes~\cite{Pietro2006, Lee2012}. Together with the AP-3 complex it plays a crucial role in cargo sorting to synaptic vesicles~\cite{Newell-Litwa2009} and was moreover found to link actin and microtubule cytoskeletons in biogenesis of recycling endosomes~\cite{Delevoye2016}. A deficiency of BLOC-1 was found to lead to several metabolic changes in hippocampal mouse tissues such as increased levels of glutamate and in summary impairment of memory and behavior~\cite{Liempd2017}.
+These findings indicate the influence of BLOC-1 on not only the cytoskeleton, whose remodelling plays a crucial role in reactive astrocytes, but also membrane trafficking and vesicel transport. 
+
+After repetition of the experiments and validation of upregulated factors this will be used as platform to test the influences of a substance library on certain protein levels.    
+
+\subsection{Surface Proteomics of polygonal Astrocytes}
+
+The actin binding protein Drebrin was recently found to be involved in the trafficking of integrins to the cell surface. These membrane proteins are crucial for the formation of focal adhesions~\cite{Schiweck2020}. To discover if Drebrin might be involved in the membrane trafficking of other surface proteins, we used a global LC-MS approach to observe changes in the surface proteome of reactive astrocytes due to knock out of the \textit{dbn} gene. For the quantificaton of enriched proteins we performed surface biotinylation experiments.
+
+Statistical analysis of the MS data (biotinylated vs. unbiotinylated, FDR 5\%) revealed 978 enriched proteins in WT and 858 enriched proteins in DBN KO samples. In total 1162 proteins were found to be biotin-enriched of which 16 were DBN KO- and 15 were WT-enriched (p-value 0.05, fold change 2 fold). Considering a FDR of even 20\% only 1 protein was found to be enriched in DBN KO samples.
+
+Because of the rather high biotin-enrichment in non biotinylated samples we concluded that there was a high amount of unspecifically bound proteins on the neutravidin beads. We decided to cleave the disulfide bond of the biotin linker using DTT in following experiments to get rid of unspecifically bound proteins.
+
+The cleavage of the disulfide bond was performed by DTT and led to an tremendously increased ratio of biotin-enriched proteins in the intentionally biotinylated protein samples what indicates, that unspecifically bound proteins remaind on the beads, whilst the biotinylated proteins were cleaved from the beads.
+
+Several Integrins were found to be biotin enriched in WT astrocytes, which leads to the conclusion that their trafficking to the cell surface was performed appropriately.  
+
+In following experiments we would like to observe the difference in the abundance of Integrins at the cell surface between reactive WT and DBN KO astrocytes, and are moreover interested in the discovery of other proteins that were transported to the cell surface by Drebrin-dependant membrane trafficking.     
+
+
+\subsection{Drebrin expression in rats spinal cord}
+
+Astrogliosis is a phenomenon that is not restricted to brain tissue. Astrocytes spreading the whole CNS including the spinal cord, where pathological circumstances like trauma, ischemia, neuroinflammation or neurodegenaration can also lead to reactive astrocytes. Immunohistochemical stainings of rats spinal cords were used to observe the distribution of Drebrin after spinal cord injury (SCI). After both 9 weeks and 12 weeks Drebrin was almost found to be significantly enriched. Because of the low number of biological replicates (N=3) the threshold of significance could not be reached but the shown results evoke a clear tendency to an upregulation of Drebrin near the wound after SCI. Moreover the analysis had inherent difficulties. Due to the fact that GFAP and DBN do not colocalize, it was indistinguishable if the signal comes from neurons, which are also expressing Drebrin in the spinal cord or from astrocytes.
+
+%So the function of Drebrin in astrogliosis seems not to be restricted to cerebral/cortical astrocytes but instead an abassador of reactive Astrocytes of the whole CNS.             
+
+
+This thesis provided insights into several aspect of astrogliosis. 
+
+First, a new stellate astrocyte cell culture model was established in the lab and  initial experiments showed that a scrathc wound injury induces an astrogliosis reponse in these cells. This platform will serve to test substances acting on astrogliosis in the future.
+
+Second, surface biotinylation experiments provided insights into the surface proteome of injured astrocytes with or without Drebrin. 
+
+Third, the recently discovered upregulation of Drebrin in cortical astrocytes may be present as well in different species and pathologies, a finding that has to be validated in further experiments.
+
+
+\newpage
+%\section{Literatur}
+\renewcommand\bibname{}
+\bibliography{josephine_template.bib}
+
+%\newpage
+%\section*{Anhang}
+%\addcontentsline{toc}{section}{Anhang}
+ 
+%\subsection*{Anhang Nummer 1}
+%\addcontentsline{toc}{subsection}{Anhang Nummer 1}
+ 
+
+
+
+%\subsection*{Anhang Nummer 2}
+%\addcontentsline{toc}{subsection}{Anhang Nummer 2}
+ 
+
+
+\end{document}
